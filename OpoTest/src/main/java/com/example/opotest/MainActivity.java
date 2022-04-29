@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity {
         DbHelper dbHelper = new DbHelper(MainActivity.this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        final dbPreguntas dbPreguntas = new dbPreguntas(MainActivity.this);
-        preg = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
-
         tv = (TextView) findViewById(R.id.textoo);
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         cb1 = (RadioButton) findViewById(R.id.respuesta1);
@@ -66,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void cargarPregunta(){
         //preg2 = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
+        final dbPreguntas dbPreguntas = new dbPreguntas(MainActivity.this);
+        preg = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
 
         tv.setText(preg.getPregunta().trim());
         cb1.setText(preg.getRespuesta1().trim());
@@ -87,12 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         //preg2 = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
 
-        tv.setText(preg.getPregunta().trim());
-        cb1.setText(preg.getRespuesta1().trim());
-        cb2.setText(preg.getRespuesta2().trim());
-        cb3.setText(preg.getRespuesta3().trim());
-        cb4.setText(preg.getRespuesta4().trim());
-        cbCorr.setText(preg.getRespuesta_correcta().trim());
+        cargarPregunta();
 
         /*tv2.setText(preg2.getPregunta().trim());
         cb12.setText(preg2.getRespuesta1().trim());
