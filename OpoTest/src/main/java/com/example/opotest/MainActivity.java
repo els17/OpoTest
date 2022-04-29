@@ -3,6 +3,7 @@ package com.example.opotest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -15,10 +16,12 @@ import com.example.opotest.Entidades.Preguntas;
 import com.example.opotest.db.DbHelper;
 import com.example.opotest.db.dbPreguntas;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv;
-    private TextView tv2;
     private RadioGroup rg;
     private RadioButton cb1;
     private RadioButton cb2;
@@ -45,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         tv = (TextView) findViewById(R.id.textoo);
-        tv2 = (TextView) findViewById(R.id.correcto);
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         cb1 = (RadioButton) findViewById(R.id.respuesta1);
         cb2 = (RadioButton) findViewById(R.id.respuesta2);
@@ -104,16 +106,24 @@ public class MainActivity extends AppCompatActivity {
         RadioButton selectedRadioButton;
         int selectedRadioButtonId = rg.getCheckedRadioButtonId();
         String selectedRbText = "";
-
+        String[] textRadio = new String[]{(String) cb1.getText(),(String) cb2.getText(),(String) cb3.getText(),(String) cb4.getText()};
         if (selectedRadioButtonId != -1) {
             selectedRadioButton = findViewById(selectedRadioButtonId);
             selectedRbText = selectedRadioButton.getText().toString();
-            System.out.println("id:" + selectedRadioButtonId);
-            System.out.println("texto selec:" + selectedRbText + "/");
-            System.out.println("respuesta correcta:" + preg.getRespuesta_correcta().trim() + "/");
             if (selectedRbText.trim().equals(preg.getRespuesta_correcta().trim()))
             {
-                tv2.setText("CORRECTA");
+                selectedRadioButton.setText("✔. " + selectedRbText);
+                selectedRadioButton.setTextColor(Color.GREEN);
+            }else{
+                selectedRadioButton.setText("X. " + selectedRbText);
+                selectedRadioButton.setTextColor(Color.RED);
+                /*for (int i = 0; i < textRadio.length; i++)
+                {
+                    if (textRadio[i].equals(preg.getRespuesta_correcta())){
+                        textRadio[i].setText("✔. " + selectedRbText);
+                        textRadio[i].setTextColor(Color.GREEN);
+                    }
+                }*/
             }
         } else {
         }
