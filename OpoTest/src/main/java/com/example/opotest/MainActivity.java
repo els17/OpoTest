@@ -18,6 +18,7 @@ import com.example.opotest.db.dbPreguntas;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv;
+    private TextView tv2;
     private RadioGroup rg;
     private RadioButton cb1;
     private RadioButton cb2;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         tv = (TextView) findViewById(R.id.textoo);
+        tv2 = (TextView) findViewById(R.id.correcto);
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         cb1 = (RadioButton) findViewById(R.id.respuesta1);
         cb2 = (RadioButton) findViewById(R.id.respuesta2);
@@ -106,12 +108,18 @@ public class MainActivity extends AppCompatActivity {
         if (selectedRadioButtonId != -1) {
             selectedRadioButton = findViewById(selectedRadioButtonId);
             selectedRbText = selectedRadioButton.getText().toString();
+            System.out.println("id:" + selectedRadioButtonId);
+            System.out.println("texto selec:" + selectedRbText + "/");
+            System.out.println("respuesta correcta:" + preg.getRespuesta_correcta().trim() + "/");
+            if (selectedRbText.trim().equals(preg.getRespuesta_correcta().trim()))
+            {
+                tv2.setText("CORRECTA");
+            }
         } else {
         }
-        if (selectedRbText == preg.getRespuesta_correcta())
-        {
-            Toast.makeText(this, "CORRECTAAA", Toast.LENGTH_SHORT).show();
-        }
+
+
+
     }
 
 
