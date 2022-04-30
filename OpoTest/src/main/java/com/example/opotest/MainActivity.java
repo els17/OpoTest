@@ -143,10 +143,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        } else {
         }
-
-
+        cb1.setEnabled(false);
+        cb2.setEnabled(false);
+        cb3.setEnabled(false);
+        cb4.setEnabled(false);
 
     }
 
