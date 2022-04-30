@@ -117,13 +117,31 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 selectedRadioButton.setText("X. " + selectedRbText);
                 selectedRadioButton.setTextColor(Color.RED);
-                /*for (int i = 0; i < textRadio.length; i++)
+                for (int i = 0; i < textRadio.length; i++)
                 {
                     if (textRadio[i].equals(preg.getRespuesta_correcta())){
-                        textRadio[i].setText("✔. " + selectedRbText);
-                        textRadio[i].setTextColor(Color.GREEN);
+                        if(i == 0)
+                        {
+                            cb1.setText("✔. " + preg.getRespuesta_correcta());
+                            cb1.setTextColor(Color.GREEN);
+                        }
+                        if(i == 1)
+                        {
+                            cb2.setText("✔. " + preg.getRespuesta_correcta());
+                            cb2.setTextColor(Color.GREEN);
+                        }
+                        if(i == 2)
+                        {
+                            cb3.setText("✔. " + preg.getRespuesta_correcta());
+                            cb3.setTextColor(Color.GREEN);
+                        }
+                        if(i == 3)
+                        {
+                            cb4.setText("✔. " + preg.getRespuesta_correcta());
+                            cb4.setTextColor(Color.GREEN);
+                        }
                     }
-                }*/
+                }
             }
         } else {
         }
