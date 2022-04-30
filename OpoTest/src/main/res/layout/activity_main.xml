@@ -30,17 +30,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/letraA5"
-        android:layout_width="35dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="56dp"
-        android:gravity="right"
-        android:text="@string/letraA5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/letraA4" />
-
-    <TextView
         android:id="@+id/letraA3"
         android:layout_width="35dp"
         android:layout_height="22dp"
@@ -85,8 +74,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="340dp"
-        android:layout_height="413dp"
+        android:layout_width="338dp"
+        android:layout_height="343dp"
         android:layout_marginStart="48dp"
         android:onClick="comprobarRespuesta"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,11 +111,6 @@
             android:onClick="comprobarRespuesta"
             android:text="RadioButton" />
 
-        <CheckBox
-            android:id="@+id/respuestaCorrecta"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:text="CheckBox" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

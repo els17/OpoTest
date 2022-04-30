@@ -27,17 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton cb2;
     private RadioButton cb3;
     private RadioButton cb4;
-    private CheckBox cbCorr;
-
-    /*private TextView tv2;
-    private CheckBox cb12;
-    private CheckBox cb22;
-    private CheckBox cb32;
-    private CheckBox cb42;
-    private CheckBox cb52;*/
 
     Preguntas preg;
-//    Preguntas preg2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,20 +44,11 @@ public class MainActivity extends AppCompatActivity {
         cb2 = (RadioButton) findViewById(R.id.respuesta2);
         cb3 = (RadioButton) findViewById(R.id.respuesta3);
         cb4 = (RadioButton) findViewById(R.id.respuesta4);
-        cbCorr = (CheckBox) findViewById(R.id.respuestaCorrecta);
-
-        /*tv2 = (TextView) findViewById(R.id.textoo2);
-        cb12 = (CheckBox) findViewById(R.id.respuesta12);
-        cb22 = (CheckBox) findViewById(R.id.respuesta22);
-        cb32 = (CheckBox) findViewById(R.id.respuesta32);
-        cb42 = (CheckBox) findViewById(R.id.respuesta42);
-        cb52 = (CheckBox) findViewById(R.id.respuestaCorrecta2);*/
 
         cargarPregunta();
     }
 
     public void cargarPregunta(){
-        //preg2 = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
         final dbPreguntas dbPreguntas = new dbPreguntas(MainActivity.this);
         preg = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
 
@@ -75,30 +57,19 @@ public class MainActivity extends AppCompatActivity {
         cb2.setText(preg.getRespuesta2().trim());
         cb3.setText(preg.getRespuesta3().trim());
         cb4.setText(preg.getRespuesta4().trim());
-        cbCorr.setText(preg.getRespuesta_correcta().trim());
-
-        /*tv2.setText(preg2.getPregunta().trim());
-        cb12.setText(preg2.getRespuesta1().trim());
-        cb22.setText(preg2.getRespuesta2().trim());
-        cb32.setText(preg2.getRespuesta3().trim());
-        cb42.setText(preg2.getRespuesta4().trim());
-        cb52.setText(preg2.getRespuesta_correcta().trim());*/
-
     }
 
     public void cargarPregunta(View View){
-
-        //preg2 = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
-
         cargarPregunta();
-
-        /*tv2.setText(preg2.getPregunta().trim());
-        cb12.setText(preg2.getRespuesta1().trim());
-        cb22.setText(preg2.getRespuesta2().trim());
-        cb32.setText(preg2.getRespuesta3().trim());
-        cb42.setText(preg2.getRespuesta4().trim());
-        cb52.setText(preg2.getRespuesta_correcta().trim());*/
-
+        rg.clearCheck();
+        cb1.setEnabled(true);
+        cb2.setEnabled(true);
+        cb3.setEnabled(true);
+        cb4.setEnabled(true);
+        cb1.setTextColor(Color.BLACK);
+        cb2.setTextColor(Color.BLACK);
+        cb3.setTextColor(Color.BLACK);
+        cb4.setTextColor(Color.BLACK);
     }
 
     public void comprobarRespuesta(View view)
@@ -148,8 +119,5 @@ public class MainActivity extends AppCompatActivity {
         cb2.setEnabled(false);
         cb3.setEnabled(false);
         cb4.setEnabled(false);
-
     }
-
-
 }
