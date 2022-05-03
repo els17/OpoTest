@@ -43,4 +43,31 @@ public class dbPreguntas extends DbHelper{
 
         return pregunta;
     }
+
+    public Preguntas verPregunta(int id, int tema) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Preguntas pregunta = null;
+        Cursor cursorPreguntas;
+
+        cursorPreguntas = db.rawQuery("SELECT * FROM " + TABLE_PREGUNTAS + " WHERE id_pregunta = " + id + " AND id_tema = " + tema +  " LIMIT 1", null);
+
+        if (cursorPreguntas.moveToFirst()) {
+            pregunta = new Preguntas();
+            pregunta.setId_pregunta(cursorPreguntas.getInt(0));
+            pregunta.setId_tema(cursorPreguntas.getInt(1));
+            pregunta.setPregunta(cursorPreguntas.getString(2));
+            pregunta.setRespuesta1(cursorPreguntas.getString(3));
+            pregunta.setRespuesta2(cursorPreguntas.getString(4));
+            pregunta.setRespuesta3(cursorPreguntas.getString(5));
+            pregunta.setRespuesta4(cursorPreguntas.getString(6));
+            pregunta.setRespuesta_correcta(cursorPreguntas.getString(7));
+
+        }
+        cursorPreguntas.close();
+
+        return pregunta;
+    }
 }

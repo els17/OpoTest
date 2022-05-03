@@ -6,20 +6,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.opotest.Entidades.Preguntas;
 import com.example.opotest.db.DbHelper;
 import com.example.opotest.db.dbPreguntas;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class MainActivity extends AppCompatActivity {
+public class PantallaPrincipal extends AppCompatActivity {
 
     private TextView tv;
     private RadioGroup rg;
@@ -33,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pantalla_principal);
 
-        DbHelper dbHelper = new DbHelper(MainActivity.this);
+        DbHelper dbHelper = new DbHelper(PantallaPrincipal.this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         tv = (TextView) findViewById(R.id.textoo);
@@ -49,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cargarPregunta(){
-        final dbPreguntas dbPreguntas = new dbPreguntas(MainActivity.this);
+        final dbPreguntas dbPreguntas = new dbPreguntas(PantallaPrincipal.this);
         preg = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
 
         tv.setText(preg.getPregunta().trim());
