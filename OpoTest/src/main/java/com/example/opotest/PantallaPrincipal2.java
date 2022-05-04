@@ -43,7 +43,8 @@ public class PantallaPrincipal2 extends AppCompatActivity {
         cargarPregunta();
     }
 
-    public void cargarPregunta(){
+    public void cargarPregunta()
+    {
         final dbPreguntas dbPreguntas = new dbPreguntas(PantallaPrincipal2.this);
         preg = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
 
@@ -54,7 +55,8 @@ public class PantallaPrincipal2 extends AppCompatActivity {
         cb4.setText(preg.getRespuesta4().trim());
     }
 
-    public void cargarPregunta(View View){
+    public void cargarPregunta(View View)
+    {
         cargarPregunta();
         rg.clearCheck();
         cb1.setEnabled(true);
