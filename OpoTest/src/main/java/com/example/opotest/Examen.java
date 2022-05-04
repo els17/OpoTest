@@ -19,4 +19,10 @@ public class Examen extends AppCompatActivity {
         Intent intent = new Intent (view.getContext(), Examen.class);
         startActivityForResult(intent, 0);
     }
+
+    public void retroceder(View view)
+    {
+        Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
+        startActivityForResult(intent, 0);
+    }
 }
