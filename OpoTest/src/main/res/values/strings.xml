@@ -2,6 +2,7 @@
     <string name="app_name">OpoTest</string>
     <string name="botonTemas">Test por temas</string>
     <string name="botonExamen">Examen</string>
+    <string name="botonFlot">Boton flotante</string>
     <string name="botTituloPrelim">Titulo preliminar</string>
     <string name="txtTituloPrelim">\nTitulo preliminar</string>
     <string name="txtTituloI">\nTitulo I. Derechos y deberes</string>
