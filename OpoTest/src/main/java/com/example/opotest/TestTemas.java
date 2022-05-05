@@ -24,4 +24,10 @@ public class TestTemas extends AppCompatActivity {
     public void pruebaBoton(View view){
         Toast.makeText(this, "FUNCIONA NICE :))", Toast.LENGTH_SHORT).show();
     }
+
+    public void testPre(View view)
+    {
+        Intent intent = new Intent (view.getContext(), TestPreliminar.class);
+        startActivityForResult(intent, 0);
+    }
 }

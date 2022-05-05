@@ -10,12 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpoTest">
         <activity
+            android:name=".TestPreliminar"
+            android:exported="false" />
+        <activity
             android:name=".Examen"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".PantallaPrincipal"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +26,10 @@
         </activity>
         <activity
             android:name=".TestTemas"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".PantallaPrincipal2"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>

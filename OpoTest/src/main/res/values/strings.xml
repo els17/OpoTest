@@ -22,6 +22,13 @@
     <string name="botonEmpezar">Empezar examen</string>
     <string name="txtExamen">Elija los temas de los cuales se va a examinar:</string>
 
+    <!--Test Preliminar -->
+    <string name="txtPre">Tests sobre el Titulo Preliminar</string>
+    <string name="tst1">Test 1</string>
+    <string name="tst2">Test 2</string>
+    <string name="tst3">Test 3</string>
+
+
     <string name="next">Siguiente pagina</string>
     <string name="letraA">A)</string>
     <string name="letraA2">B)</string>
