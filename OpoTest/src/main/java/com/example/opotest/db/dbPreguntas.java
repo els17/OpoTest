@@ -70,4 +70,21 @@ public class dbPreguntas extends DbHelper{
 
         return pregunta;
     }
+
+    public int cuentaPreguntas(int tema)
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        int numPregs = 0;
+        Cursor cursorPreguntas;
+
+        cursorPreguntas = db.rawQuery("SELECT count(id_pregunta) FROM " + TABLE_PREGUNTAS + " WHERE id_tema = " + tema +  " LIMIT 1", null);
+        if (cursorPreguntas.moveToFirst()) {
+            numPregs = cursorPreguntas.getInt(0);
+        }
+        cursorPreguntas.close();
+
+        return (numPregs);
+    }
 }
