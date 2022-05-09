@@ -27,6 +27,7 @@
 
             <TextView
                 android:id="@+id/txtTituloPrelim"
+                android:tag = "1"
                 android:layout_width="350dp"
                 android:layout_height="120dp"
                 android:layout_marginStart="8dp"
@@ -45,11 +46,13 @@
 
             <TextView
                 android:id="@+id/txtTituloI"
+                android:tag = "2"
                 android:layout_width="350dp"
                 android:layout_height="120dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloI"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -152,7 +155,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
-                android:onClick="pruebaBoton"
                 android:text="@string/txtTituloVII"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -325,7 +327,6 @@
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
                 android:contentDescription="@string/txtTituloVII"
-                android:onClick="pruebaBoton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
