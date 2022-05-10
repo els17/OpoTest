@@ -24,7 +24,7 @@ public class TestTemas extends AppCompatActivity {
 
     public void testPre(View view)
     {
-        Intent intent = new Intent (view.getContext(), TestPreliminar.class);
+        Intent intent = new Intent (view.getContext(), CargaTests.class);
         startActivityForResult(intent, 0);
         switch (view.getId())
         {
