@@ -17,7 +17,7 @@ import org.w3c.dom.Text;
 
 public class TestTemas extends AppCompatActivity {
 
-    int id;
+    static int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +31,6 @@ public class TestTemas extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void testPre(View view)
     {
         Intent intent = new Intent (view.getContext(), TestPreliminar.class);
@@ -47,8 +39,12 @@ public class TestTemas extends AppCompatActivity {
         {
             case R.id.txtTituloPrelim:
                 System.out.println("FUNCIONA");
-                //setId(1);
+                id = 1;
         }
+    }
+
+    public static int getId() {
+        return id;
     }
 
 }

@@ -17,15 +17,13 @@ import com.example.opotest.db.dbPreguntas;
 
 public class TestPreliminar extends AppCompatActivity {
 
-    TestTemas tt = new TestTemas();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_preliminar);
 
-        //System.out.println("ID FUNCIONANDO ----> " + tt.getId());
-        cargarTests(1);
+        System.out.println("ID FUNCIONANDO ----> " + TestTemas.getId());
+        //cargarTests(1);
 
     }
 
