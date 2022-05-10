@@ -26,7 +26,7 @@
             tools:context=".TestTemas">
 
             <TextView
-                android:id="@+id/txtTituloPrelim"
+                android:id="@+id/txtPre"
                 android:tag = "1"
                 android:layout_width="350dp"
                 android:layout_height="120dp"
@@ -40,7 +40,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imgPre"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.001" />
 
@@ -59,8 +59,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/txtTituloPrelim"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloI"
+                app:layout_constraintTop_toBottomOf="@+id/txtPre"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -70,13 +70,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloII"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloII"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloI"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -87,13 +88,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloIII"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloIII"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloII"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -104,13 +106,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloIV"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloIV"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloIII"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -121,13 +124,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloV"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloV"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloIV"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -138,13 +142,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloVI"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloVI"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloV"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -155,13 +160,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloVII"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView9"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloVII"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloVI"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -172,13 +178,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloVIII"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloVIII"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloVII"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -189,13 +196,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloIX"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView11"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloIX"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloVIII"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -206,13 +214,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloX"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView12"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloX"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloIX"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -223,14 +232,15 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
+                android:onClick="testPre"
                 android:text="@string/txtTituloXI"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView13"
+                app:layout_constraintStart_toEndOf="@+id/imgTituloXI"
                 app:layout_constraintTop_toBottomOf="@+id/txtTituloX" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imgPre"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
@@ -244,146 +254,157 @@
                 app:srcCompat="@mipmap/preliminar" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imgTituloI"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imgPre"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/derechos" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgTituloII"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloI"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/corona" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imgTituloIII"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloII"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/cortes_generales" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imgTituloIV"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloIII"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/gobierno" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/imgTituloV"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloIV"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/gob_cortes" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imgTituloVI"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloV"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/judicial" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/imgTituloVII"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 android:contentDescription="@string/txtTituloVII"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloVI"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/economia" />
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/imgTituloVIII"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloVII"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/territorio" />
 
             <ImageView
-                android:id="@+id/imageView11"
+                android:id="@+id/imgTituloIX"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView10"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloVIII"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/tribunal" />
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/imgTituloX"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView11"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloIX"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/reformas" />
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/imgTituloXI"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="8dp"
+                android:onClick="testPre"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView12"
+                app:layout_constraintTop_toBottomOf="@+id/imgTituloX"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@mipmap/adicional" />
 

@@ -22,9 +22,45 @@ public class TestPreliminar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_preliminar);
 
-        System.out.println("ID FUNCIONANDO ----> " + TestTemas.getId());
-        //cargarTests(1);
-
+        switch (TestTemas.getId())
+        {
+            case 1:
+                cargarTests(TestTemas.getId());
+                break;
+            case 2:
+                cargarTests(TestTemas.getId());
+                break;
+            case 3:
+                cargarTests(TestTemas.getId());
+                break;
+            case 4:
+                cargarTests(TestTemas.getId());
+                break;
+            case 5:
+                cargarTests(TestTemas.getId());
+                break;
+            case 6:
+                cargarTests(TestTemas.getId());
+                break;
+            case 7:
+                cargarTests(TestTemas.getId());
+                break;
+            case 8:
+                cargarTests(TestTemas.getId());
+                break;
+            case 9:
+                cargarTests(TestTemas.getId());
+                break;
+            case 10:
+                cargarTests(TestTemas.getId());
+                break;
+            case 11:
+                cargarTests(TestTemas.getId());
+                break;
+            case 12:
+                cargarTests(TestTemas.getId());
+                break;
+        }
     }
 
     public void retroceder(View view)
