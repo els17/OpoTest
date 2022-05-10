@@ -14,6 +14,8 @@ import com.example.opotest.db.dbPreguntas;
 
 public class CargaTests extends AppCompatActivity {
 
+    int numTests;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +74,11 @@ public class CargaTests extends AppCompatActivity {
         LinearLayout.LayoutParams layoutParamsImg = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams. MATCH_PARENT ,
                 LinearLayout.LayoutParams. WRAP_CONTENT ) ;
-        layoutParamsImg.setMargins(0,50,0,0);
+        layoutParamsImg.setMargins(0,60,0,0);
         LinearLayout.LayoutParams layoutParamsTxt = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams. MATCH_PARENT ,
                 LinearLayout.LayoutParams. WRAP_CONTENT ) ;
-        layoutParamsImg.setMargins(0,60,0,0);
-        int numTests;
+        layoutParamsTxt.setMargins(0,10,0,0);
         final dbPreguntas dbPreguntas = new dbPreguntas(CargaTests.this);
         numTests = dbPreguntas.cuentaPreguntas(tema)/10;
 
@@ -86,6 +87,14 @@ public class CargaTests extends AppCompatActivity {
             ImageView img = new ImageView(this);
             img.setBackgroundResource(R.mipmap.test1);
             img.setLayoutParams(layoutParamsImg);
+            img.setTag("i" + i);
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent (v.getContext(), CargaPreguntas.class);
+                    startActivityForResult(intent, 0);
+                }
+            });
             layout.addView(img, layoutParamsImg);
             TextView txt = new TextView(this);
             txt.setText("Test " + (i+1));
@@ -95,4 +104,5 @@ public class CargaTests extends AppCompatActivity {
             layout.addView(txt, layoutParamsTxt);
         }
     }
+
 }

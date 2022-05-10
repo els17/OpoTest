@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpoTest">
         <activity
+            android:name=".CargaPreguntas"
+            android:exported="false" />
+        <activity
             android:name=".CargaTests"
             android:exported="false" />
         <activity
