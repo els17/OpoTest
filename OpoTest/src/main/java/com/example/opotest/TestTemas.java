@@ -17,30 +17,26 @@ import org.w3c.dom.Text;
 
 public class TestTemas extends AppCompatActivity {
 
-    TestPreliminar tp = new TestPreliminar();
-    TextView tv;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_temas);
-        tv = (TextView) findViewById(R.id.txtTituloPrelim);
-        /*tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // place your clicking handle code here.
-                Intent intent = new Intent (v.getContext(), TestPreliminar.class);
-                startActivityForResult(intent, 0);
-                tp.cargarTests(1);
-
-            }
-        });*/
     }
 
     public void retroceder(View view)
     {
         Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
         startActivityForResult(intent, 0);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void testPre(View view)
@@ -51,7 +47,7 @@ public class TestTemas extends AppCompatActivity {
         {
             case R.id.txtTituloPrelim:
                 System.out.println("FUNCIONA");
-                tp.cargarTests(1);
+                //setId(1);
         }
     }
 
