@@ -15,6 +15,7 @@ import com.example.opotest.db.dbPreguntas;
 public class CargaTests extends AppCompatActivity {
 
     int numTests;
+    static int idTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,12 +88,13 @@ public class CargaTests extends AppCompatActivity {
             ImageView img = new ImageView(this);
             img.setBackgroundResource(R.mipmap.test1);
             img.setLayoutParams(layoutParamsImg);
-            img.setTag("i" + i);
+            int finalI = i;
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent (v.getContext(), CargaPreguntas.class);
                     startActivityForResult(intent, 0);
+                    idTest = (finalI + 1);
                 }
             });
             layout.addView(img, layoutParamsImg);
@@ -105,4 +107,7 @@ public class CargaTests extends AppCompatActivity {
         }
     }
 
+    public static int getIdTest() {
+        return idTest;
+    }
 }
