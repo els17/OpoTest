@@ -22,31 +22,62 @@ public class CargaPreguntas extends AppCompatActivity {
     int idMin;
     int idMax;
     Preguntas preg;
+    LinearLayout layout;
+    LinearLayout.LayoutParams layoutParamsTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carga_preguntas);
-        LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
-        LinearLayout.LayoutParams layoutParamsTxt = new LinearLayout.LayoutParams(
+        layout = (LinearLayout) findViewById(R.id.layout);
+        layoutParamsTxt = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams. MATCH_PARENT ,
                 LinearLayout.LayoutParams. WRAP_CONTENT ) ;
         layoutParamsTxt.setMargins(0,60,0,0);
+
+        cargarPregunta();
+
+    }
+
+    public void cargarPregunta()
+    {
+        int i = 0;
         final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntas.this);
         numPreguntas = dbPreguntas.cuentaPreguntas(TestTemas.getId());
         idMin = dbPreguntas.minIdPregunta(TestTemas.getId());
-        idMax = idMin + (numPreguntas - 1);
-        preg = dbPreguntas.verPregunta((int)(Math.random() * (idMax - idMin + 1) + idMin), TestTemas.getId());
 
-        System.out.println("NUMERO PREGUNTAS DEL TEMA " + TestTemas.getId() + ": " + numPreguntas);
-        System.out.println("PREGUNTAS " + preg.getId_pregunta());
+        for (i = idMin; i < (idMin + 10); i++)
+        {
+            preg = dbPreguntas.verPregunta(i);
+            System.out.println("NUMERO PREGUNTAS DEL TEMA " + TestTemas.getId() + ": " + numPreguntas);
+            System.out.println("PREGUNTAS " + preg.getId_pregunta());
+            generaElementos(preg);
+        }
 
+    }
+
+    public void generaElementos(Preguntas preg)
+    {
         TextView txt = new TextView(this);
         txt.setText(preg.getPregunta().trim());
         txt.setTextSize(20);
         txt.setLayoutParams(layoutParamsTxt);
         layout.addView(txt, layoutParamsTxt);
-
+        RadioGroup rg = new RadioGroup(this);
+        rg.setOrientation(RadioGroup.VERTICAL);
+        RadioButton rb1 = new RadioButton(this);
+        rb1.setText(preg.getRespuesta1().trim());
+        rg.addView(rb1);
+        RadioButton rb2 = new RadioButton(this);
+        rb2.setText(preg.getRespuesta2().trim());
+        rg.addView(rb2);
+        RadioButton rb3 = new RadioButton(this);
+        rb3.setText(preg.getRespuesta3().trim());
+        rg.addView(rb3);
+        RadioButton rb4 = new RadioButton(this);
+        rb4.setText(preg.getRespuesta4().trim());
+        rg.addView(rb4);
+        layout.addView(rg, layoutParamsTxt);
     }
 
     public void retroceder(View view)

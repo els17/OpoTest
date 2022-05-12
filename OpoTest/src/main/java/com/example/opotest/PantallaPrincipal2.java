@@ -18,10 +18,10 @@ public class PantallaPrincipal2 extends AppCompatActivity {
 
     private TextView tv;
     private RadioGroup rg;
-    private RadioButton cb1;
-    private RadioButton cb2;
-    private RadioButton cb3;
-    private RadioButton cb4;
+    private RadioButton rb1;
+    private RadioButton rb2;
+    private RadioButton rb3;
+    private RadioButton rb4;
 
     Preguntas preg;
 
@@ -35,10 +35,10 @@ public class PantallaPrincipal2 extends AppCompatActivity {
 
         tv = (TextView) findViewById(R.id.textoo);
         rg = (RadioGroup) findViewById(R.id.radioGroup);
-        cb1 = (RadioButton) findViewById(R.id.respuesta1);
-        cb2 = (RadioButton) findViewById(R.id.respuesta2);
-        cb3 = (RadioButton) findViewById(R.id.respuesta3);
-        cb4 = (RadioButton) findViewById(R.id.respuesta4);
+        rb1 = (RadioButton) findViewById(R.id.respuesta1);
+        rb2 = (RadioButton) findViewById(R.id.respuesta2);
+        rb3 = (RadioButton) findViewById(R.id.respuesta3);
+        rb4 = (RadioButton) findViewById(R.id.respuesta4);
 
         cargarPregunta();
     }
@@ -49,24 +49,24 @@ public class PantallaPrincipal2 extends AppCompatActivity {
         preg = dbPreguntas.verPregunta((int) (Math.random()*500 + 1));
 
         tv.setText(preg.getPregunta().trim());
-        cb1.setText(preg.getRespuesta1().trim());
-        cb2.setText(preg.getRespuesta2().trim());
-        cb3.setText(preg.getRespuesta3().trim());
-        cb4.setText(preg.getRespuesta4().trim());
+        rb1.setText(preg.getRespuesta1().trim());
+        rb2.setText(preg.getRespuesta2().trim());
+        rb3.setText(preg.getRespuesta3().trim());
+        rb4.setText(preg.getRespuesta4().trim());
     }
 
     public void cargarPregunta(View View)
     {
         cargarPregunta();
         rg.clearCheck();
-        cb1.setEnabled(true);
-        cb2.setEnabled(true);
-        cb3.setEnabled(true);
-        cb4.setEnabled(true);
-        cb1.setTextColor(Color.BLACK);
-        cb2.setTextColor(Color.BLACK);
-        cb3.setTextColor(Color.BLACK);
-        cb4.setTextColor(Color.BLACK);
+        rb1.setEnabled(true);
+        rb2.setEnabled(true);
+        rb3.setEnabled(true);
+        rb4.setEnabled(true);
+        rb1.setTextColor(Color.BLACK);
+        rb2.setTextColor(Color.BLACK);
+        rb3.setTextColor(Color.BLACK);
+        rb4.setTextColor(Color.BLACK);
     }
 
     public void comprobarRespuesta(View view)
@@ -74,7 +74,7 @@ public class PantallaPrincipal2 extends AppCompatActivity {
         RadioButton selectedRadioButton;
         int selectedRadioButtonId = rg.getCheckedRadioButtonId();
         String selectedRbText = "";
-        String[] textRadio = new String[]{(String) cb1.getText(),(String) cb2.getText(),(String) cb3.getText(),(String) cb4.getText()};
+        String[] textRadio = new String[]{(String) rb1.getText(),(String) rb2.getText(),(String) rb3.getText(),(String) rb4.getText()};
         if (selectedRadioButtonId != -1) {
             selectedRadioButton = findViewById(selectedRadioButtonId);
             selectedRbText = selectedRadioButton.getText().toString();
@@ -90,31 +90,31 @@ public class PantallaPrincipal2 extends AppCompatActivity {
                     if (textRadio[i].equals(preg.getRespuesta_correcta())){
                         if(i == 0)
                         {
-                            cb1.setText("✔. " + preg.getRespuesta_correcta());
-                            cb1.setTextColor(Color.GREEN);
+                            rb1.setText("✔. " + preg.getRespuesta_correcta());
+                            rb1.setTextColor(Color.GREEN);
                         }
                         if(i == 1)
                         {
-                            cb2.setText("✔. " + preg.getRespuesta_correcta());
-                            cb2.setTextColor(Color.GREEN);
+                            rb2.setText("✔. " + preg.getRespuesta_correcta());
+                            rb2.setTextColor(Color.GREEN);
                         }
                         if(i == 2)
                         {
-                            cb3.setText("✔. " + preg.getRespuesta_correcta());
-                            cb3.setTextColor(Color.GREEN);
+                            rb3.setText("✔. " + preg.getRespuesta_correcta());
+                            rb3.setTextColor(Color.GREEN);
                         }
                         if(i == 3)
                         {
-                            cb4.setText("✔. " + preg.getRespuesta_correcta());
-                            cb4.setTextColor(Color.GREEN);
+                            rb4.setText("✔. " + preg.getRespuesta_correcta());
+                            rb4.setTextColor(Color.GREEN);
                         }
                     }
                 }
             }
         }
-        cb1.setEnabled(false);
-        cb2.setEnabled(false);
-        cb3.setEnabled(false);
-        cb4.setEnabled(false);
+        rb1.setEnabled(false);
+        rb2.setEnabled(false);
+        rb3.setEnabled(false);
+        rb4.setEnabled(false);
     }
 }
