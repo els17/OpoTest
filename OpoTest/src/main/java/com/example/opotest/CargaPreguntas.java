@@ -19,6 +19,8 @@ import com.example.opotest.db.dbPreguntas;
 public class CargaPreguntas extends AppCompatActivity {
 
     int numPreguntas;
+    int idMin;
+    int idMax;
     Preguntas preg;
 
     @Override
@@ -32,18 +34,19 @@ public class CargaPreguntas extends AppCompatActivity {
         layoutParamsTxt.setMargins(0,60,0,0);
         final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntas.this);
         numPreguntas = dbPreguntas.cuentaPreguntas(TestTemas.getId());
-        preg = dbPreguntas.verPregunta((int) (Math.random()*numPreguntas + 1), TestTemas.getId());
-        //No me localiza las preguntas de temas superiores porque busca por id y el id solo llega al num de preguntas que tiene el tema
+        idMin = dbPreguntas.minIdPregunta(TestTemas.getId());
+        idMax = idMin + (numPreguntas - 1);
+        preg = dbPreguntas.verPregunta((int)(Math.random() * (idMax - idMin + 1) + idMin), TestTemas.getId());
 
         System.out.println("NUMERO PREGUNTAS DEL TEMA " + TestTemas.getId() + ": " + numPreguntas);
-        System.out.println("PREGUNTAS " + preg);
-/*
+        System.out.println("PREGUNTAS " + preg.getId_pregunta());
+
         TextView txt = new TextView(this);
         txt.setText(preg.getPregunta().trim());
         txt.setTextSize(20);
         txt.setLayoutParams(layoutParamsTxt);
         layout.addView(txt, layoutParamsTxt);
-*/
+
     }
 
     public void retroceder(View view)

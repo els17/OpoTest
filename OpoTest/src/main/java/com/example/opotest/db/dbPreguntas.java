@@ -87,4 +87,21 @@ public class dbPreguntas extends DbHelper{
 
         return (numPregs);
     }
+
+    public int minIdPregunta(int tema)
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        int min = 0;
+        Cursor cursorPreguntas;
+
+        cursorPreguntas = db.rawQuery("SELECT min(id_pregunta) FROM " + TABLE_PREGUNTAS + " WHERE id_tema = " + tema +  " LIMIT 1", null);
+        if (cursorPreguntas.moveToFirst()) {
+            min = cursorPreguntas.getInt(0);
+        }
+        cursorPreguntas.close();
+
+        return (min);
+    }
 }
