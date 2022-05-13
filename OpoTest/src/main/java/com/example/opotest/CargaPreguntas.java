@@ -18,13 +18,17 @@ import com.example.opotest.db.dbPreguntas;
 
 public class CargaPreguntas extends AppCompatActivity {
 
-    int numPreguntas;
     int idMin;
-    int idMinTemp;
     int temp = 1;
     Preguntas preg;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
+    TextView txt;
+    RadioGroup rg;
+    RadioButton rb1;
+    RadioButton rb2;
+    RadioButton rb3;
+    RadioButton rb4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +97,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
                     preg = dbPreguntas.verPregunta(i);
-                    generaElementos(i, 10, preg);
+                    generaElementos(temp, 10, preg);
                     temp++;
                 }
                 temp = 1;
@@ -103,32 +107,73 @@ public class CargaPreguntas extends AppCompatActivity {
 
     public void generaElementos(int numpregunta, int totPreguntas, Preguntas preg)
     {
-        TextView txt = new TextView(this);
+        txt = new TextView(this);
         txt.setText(numpregunta + "/" + totPreguntas + ". " + preg.getPregunta().trim());
         txt.setTextSize(16);
         txt.setLayoutParams(layoutParamsTxt);
         layout.addView(txt, layoutParamsTxt);
-        RadioGroup rg = new RadioGroup(this);
+        rg = new RadioGroup(this);
         rg.setOrientation(RadioGroup.VERTICAL);
-        RadioButton rb1 = new RadioButton(this);
+        rg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("RG");
+                comprobarRespuesta();
+            }
+        });
+        rb1 = new RadioButton(this);
         rb1.setText(preg.getRespuesta1().trim());
+        rb1.setId(R.id.rb1);
+        rb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("RB1 " + rb1.getId());
+                comprobarRespuesta();
+            }
+        });
         rg.addView(rb1);
-        RadioButton rb2 = new RadioButton(this);
+        rb2 = new RadioButton(this);
         rb2.setText(preg.getRespuesta2().trim());
+        rb2.setId(R.id.rb2);
+        rb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("RB2 " + rb2.getId());
+                comprobarRespuesta();
+            }
+        });
         rg.addView(rb2);
-        RadioButton rb3 = new RadioButton(this);
+        rb3 = new RadioButton(this);
         rb3.setText(preg.getRespuesta3().trim());
+        rb3.setId(R.id.rb3);
+        rb3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("RB3 " + rb3.getId());
+                comprobarRespuesta();
+            }
+        });
         rg.addView(rb3);
-        RadioButton rb4 = new RadioButton(this);
+        rb4 = new RadioButton(this);
         rb4.setText(preg.getRespuesta4().trim());
+        rb4.setId(R.id.rb4);
+        rb4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("RB4 " + rb4.getId());
+                comprobarRespuesta();
+            }
+        });
         rg.addView(rb4);
         layout.addView(rg, layoutParamsTxt);
     }
 
-    public void comprobarRespuesta(RadioButton rb1, RadioButton rb2, RadioButton rb3, RadioButton rb4, RadioGroup rg)
+    public void comprobarRespuesta()
     {
+        System.out.println("ENTRA AL METODO");
         RadioButton selectedRadioButton;
         int selectedRadioButtonId = rg.getCheckedRadioButtonId();
+        System.out.println(selectedRadioButtonId);
         String selectedRbText = "";
         String[] textRadio = new String[]{(String) rb1.getText(),(String) rb2.getText(),(String) rb3.getText(),(String) rb4.getText()};
         if (selectedRadioButtonId != -1) {
