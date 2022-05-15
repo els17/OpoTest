@@ -54,58 +54,65 @@ public class CargaPreguntas extends AppCompatActivity {
         switch (CargaTests.getIdTest())
         {
             case 1:
+                System.out.println("ENTRO EN 1");
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
                     preg = dbPreguntas.verPregunta(i);
-                    generaElementos(temp, 10, preg);
+                    System.out.println("i --------> " + i);
+                    generaElementos(temp, 10, preg, i);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 2:
+                System.out.println("ENTRO EN 2");
                 idMin += 10;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
                     preg = dbPreguntas.verPregunta(i);
-                    generaElementos(temp, 10, preg);
+                    generaElementos(temp, 10, preg, i);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 3:
+                System.out.println("ENTRO EN 3");
                 idMin += 20;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
                     preg = dbPreguntas.verPregunta(i);
-                    generaElementos(temp, 10, preg);
+                    generaElementos(temp, 10, preg, i);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 4:
+                System.out.println("ENTRO EN 4");
                 idMin += 30;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
                     preg = dbPreguntas.verPregunta(i);
-                    generaElementos(temp, 10, preg);
+                    generaElementos(temp, 10, preg, i);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 5:
+                System.out.println("ENTRO EN 5");
                 idMin += 40;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
                     preg = dbPreguntas.verPregunta(i);
-                    generaElementos(temp, 10, preg);
+                    generaElementos(temp, 10, preg, i);
                     temp++;
                 }
                 temp = 1;
                 break;
         }
+
     }
 
-    public void generaElementos(int numpregunta, int totPreguntas, Preguntas preg)
+    public void generaElementos(int numpregunta, int totPreguntas, Preguntas preg, int i)
     {
         txt = new TextView(this);
         txt.setText(numpregunta + "/" + totPreguntas + ". " + preg.getPregunta().trim());
@@ -123,7 +130,8 @@ public class CargaPreguntas extends AppCompatActivity {
         });
         rb1 = new RadioButton(this);
         rb1.setText(preg.getRespuesta1().trim());
-        rb1.setId(R.id.rb1);
+        rb1.setId(i);
+        System.out.println("iD ---------> " + rb1.getId());
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +142,7 @@ public class CargaPreguntas extends AppCompatActivity {
         rg.addView(rb1);
         rb2 = new RadioButton(this);
         rb2.setText(preg.getRespuesta2().trim());
-        rb2.setId(R.id.rb2);
+        rb2.setId(i);
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +153,7 @@ public class CargaPreguntas extends AppCompatActivity {
         rg.addView(rb2);
         rb3 = new RadioButton(this);
         rb3.setText(preg.getRespuesta3().trim());
-        rb3.setId(R.id.rb3);
+        rb3.setId(i);
         rb3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +164,7 @@ public class CargaPreguntas extends AppCompatActivity {
         rg.addView(rb3);
         rb4 = new RadioButton(this);
         rb4.setText(preg.getRespuesta4().trim());
-        rb4.setId(R.id.rb4);
+        rb4.setId(i);
         rb4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,6 +175,8 @@ public class CargaPreguntas extends AppCompatActivity {
         rg.addView(rb4);
         layout.addView(rg, layoutParamsTxt);
     }
+
+    //Falta corrección de las preguntas nada mas se seleccione la respuesta. Solo aplica la correccion si respondo a la ultima pregunta
 
     public void comprobarRespuesta()
     {
