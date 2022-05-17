@@ -23,12 +23,7 @@ public class CargaPreguntas extends AppCompatActivity {
     Preguntas preg;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
-    TextView txt;
-    RadioGroup rg;
-    RadioButton rb1;
-    RadioButton rb2;
-    RadioButton rb3;
-    RadioButton rb4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +53,6 @@ public class CargaPreguntas extends AppCompatActivity {
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
                     preg = dbPreguntas.verPregunta(i);
-                    System.out.println("i --------> " + i);
                     generaElementos(temp, 10, preg, i);
                     temp++;
                 }
@@ -114,76 +108,68 @@ public class CargaPreguntas extends AppCompatActivity {
 
     public void generaElementos(int numpregunta, int totPreguntas, Preguntas preg, int i)
     {
+        TextView txt;
+        RadioGroup rg;
+        RadioButton rb1;
+        RadioButton rb2;
+        RadioButton rb3;
+        RadioButton rb4;
         txt = new TextView(this);
         txt.setText(numpregunta + "/" + totPreguntas + ". " + preg.getPregunta().trim());
         txt.setTextSize(16);
         txt.setLayoutParams(layoutParamsTxt);
         layout.addView(txt, layoutParamsTxt);
         rg = new RadioGroup(this);
+        rb1 = new RadioButton(this);
+        rb2 = new RadioButton(this);
+        rb3 = new RadioButton(this);
+        rb4 = new RadioButton(this);
         rg.setOrientation(RadioGroup.VERTICAL);
         rg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("RG");
-                comprobarRespuesta();
+                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
             }
         });
-        rb1 = new RadioButton(this);
         rb1.setText(preg.getRespuesta1().trim());
-        rb1.setId(i);
-        System.out.println("iD ---------> " + rb1.getId());
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("RB1 " + rb1.getId());
-                comprobarRespuesta();
+                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb1);
-        rb2 = new RadioButton(this);
         rb2.setText(preg.getRespuesta2().trim());
-        rb2.setId(i);
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("RB2 " + rb2.getId());
-                comprobarRespuesta();
+                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb2);
-        rb3 = new RadioButton(this);
         rb3.setText(preg.getRespuesta3().trim());
-        rb3.setId(i);
         rb3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("RB3 " + rb3.getId());
-                comprobarRespuesta();
+                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb3);
-        rb4 = new RadioButton(this);
         rb4.setText(preg.getRespuesta4().trim());
-        rb4.setId(i);
         rb4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("RB4 " + rb4.getId());
-                comprobarRespuesta();
+                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb4);
         layout.addView(rg, layoutParamsTxt);
     }
 
-    //Falta corrección de las preguntas nada mas se seleccione la respuesta. Solo aplica la correccion si respondo a la ultima pregunta
-
-    public void comprobarRespuesta()
+    public void comprobarRespuesta(RadioGroup rg, RadioButton rb1, RadioButton rb2, RadioButton rb3, RadioButton rb4)
     {
-        System.out.println("ENTRA AL METODO");
         RadioButton selectedRadioButton;
         int selectedRadioButtonId = rg.getCheckedRadioButtonId();
-        System.out.println(selectedRadioButtonId);
         String selectedRbText = "";
         String[] textRadio = new String[]{(String) rb1.getText(),(String) rb2.getText(),(String) rb3.getText(),(String) rb4.getText()};
         if (selectedRadioButtonId != -1) {
@@ -234,4 +220,6 @@ public class CargaPreguntas extends AppCompatActivity {
         Intent intent = new Intent (view.getContext(), CargaTests.class);
         startActivityForResult(intent, 0);
     }
+
+
 }
