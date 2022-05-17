@@ -20,7 +20,6 @@ public class CargaPreguntas extends AppCompatActivity {
 
     int idMin;
     int temp = 1;
-    Preguntas preg;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
 
@@ -52,6 +51,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 System.out.println("ENTRO EN 1");
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
+                    Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
                     generaElementos(temp, 10, preg, i);
                     temp++;
@@ -63,6 +63,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 idMin += 10;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
+                    Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
                     generaElementos(temp, 10, preg, i);
                     temp++;
@@ -74,6 +75,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 idMin += 20;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
+                    Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
                     generaElementos(temp, 10, preg, i);
                     temp++;
@@ -85,6 +87,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 idMin += 30;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
+                    Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
                     generaElementos(temp, 10, preg, i);
                     temp++;
@@ -96,6 +99,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 idMin += 40;
                 for (int i = idMin; i < (idMin + 10); i++)
                 {
+                    Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
                     generaElementos(temp, 10, preg, i);
                     temp++;
@@ -108,34 +112,30 @@ public class CargaPreguntas extends AppCompatActivity {
 
     public void generaElementos(int numpregunta, int totPreguntas, Preguntas preg, int i)
     {
-        TextView txt;
-        RadioGroup rg;
-        RadioButton rb1;
-        RadioButton rb2;
-        RadioButton rb3;
-        RadioButton rb4;
-        txt = new TextView(this);
+        TextView txt = new TextView(this);
+        RadioGroup rg = new RadioGroup(this);
+        RadioButton rb1 = new RadioButton(this);
+        RadioButton rb2 = new RadioButton(this);
+        RadioButton rb3 = new RadioButton(this);
+        RadioButton rb4 = new RadioButton(this);
+
         txt.setText(numpregunta + "/" + totPreguntas + ". " + preg.getPregunta().trim());
         txt.setTextSize(16);
         txt.setLayoutParams(layoutParamsTxt);
         layout.addView(txt, layoutParamsTxt);
-        rg = new RadioGroup(this);
-        rb1 = new RadioButton(this);
-        rb2 = new RadioButton(this);
-        rb3 = new RadioButton(this);
-        rb4 = new RadioButton(this);
+
         rg.setOrientation(RadioGroup.VERTICAL);
         rg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
+                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
             }
         });
         rb1.setText(preg.getRespuesta1().trim());
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
+                comprobarRespuesta(preg,  rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb1);
@@ -143,7 +143,7 @@ public class CargaPreguntas extends AppCompatActivity {
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
+                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb2);
@@ -151,7 +151,7 @@ public class CargaPreguntas extends AppCompatActivity {
         rb3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
+                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb3);
@@ -159,15 +159,21 @@ public class CargaPreguntas extends AppCompatActivity {
         rb4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comprobarRespuesta(rg, rb1, rb2, rb3, rb4);
+                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
             }
         });
         rg.addView(rb4);
         layout.addView(rg, layoutParamsTxt);
     }
 
-    public void comprobarRespuesta(RadioGroup rg, RadioButton rb1, RadioButton rb2, RadioButton rb3, RadioButton rb4)
+    public void comprobarRespuesta(Preguntas preg, RadioGroup rg, RadioButton rb1, RadioButton rb2, RadioButton rb3, RadioButton rb4)
     {
+        System.out.println("pregunta --> " + preg.getPregunta() + "|");
+        System.out.println("respuesta --> " + preg.getRespuesta_correcta() + "|");
+        System.out.println("rb1 --> " + rb1.getText() + "|");
+        System.out.println("rb2 --> " + rb2.getText() + "|");
+        System.out.println("rb3 --> " + rb3.getText() + "|");
+        System.out.println("rb4 --> " + rb4.getText() + "|");
         RadioButton selectedRadioButton;
         int selectedRadioButtonId = rg.getCheckedRadioButtonId();
         String selectedRbText = "";
