@@ -63,12 +63,6 @@ public class CargaTests extends AppCompatActivity {
         }
     }
 
-    public void retroceder(View view)
-    {
-        Intent intent = new Intent (view.getContext(), TestTemas.class);
-        startActivityForResult(intent, 0);
-    }
-
     public void cargarTests(int tema)
     {
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
@@ -109,5 +103,11 @@ public class CargaTests extends AppCompatActivity {
 
     public static int getIdTest() {
         return idTest;
+    }
+
+    public void retroceder(View view)
+    {
+        Intent intent = new Intent (view.getContext(), TestTemas.class);
+        startActivityForResult(intent, 0);
     }
 }
