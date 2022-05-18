@@ -17,47 +17,97 @@ public class CargaTests extends AppCompatActivity {
     int numTests;
     static int idTest;
 
+    LinearLayout layout;
+    LinearLayout.LayoutParams layoutParamsImg;
+    LinearLayout.LayoutParams layoutParamsTxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carga_tests);
+        layout = (LinearLayout) findViewById(R.id.layout);
+        layoutParamsImg = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams. MATCH_PARENT ,
+                LinearLayout.LayoutParams. WRAP_CONTENT ) ;
+        layoutParamsImg.setMargins(0,60,0,0);
+        layoutParamsTxt = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams. MATCH_PARENT ,
+                LinearLayout.LayoutParams. WRAP_CONTENT ) ;
+        layoutParamsTxt.setMargins(0,10,0,0);
+        TextView txt = new TextView(this);
 
         switch (TestTemas.getId())
         {
             case 1:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloPrelim));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 2:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloI));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 3:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloII));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 4:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloIII));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 5:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloIV));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 6:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloV));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 7:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloVI));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 8:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloVII));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 9:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloVIII));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 10:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloIX));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 11:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloX));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
             case 12:
+                txt.setText("Test sobre el " + getString(R.string.txtTituloXI));
+                txt.setTextSize(24);
+                layout.addView(txt, layoutParamsTxt);
                 cargarTests(TestTemas.getId());
                 break;
         }
@@ -65,15 +115,6 @@ public class CargaTests extends AppCompatActivity {
 
     public void cargarTests(int tema)
     {
-        LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
-        LinearLayout.LayoutParams layoutParamsImg = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams. MATCH_PARENT ,
-                LinearLayout.LayoutParams. WRAP_CONTENT ) ;
-        layoutParamsImg.setMargins(0,60,0,0);
-        LinearLayout.LayoutParams layoutParamsTxt = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams. MATCH_PARENT ,
-                LinearLayout.LayoutParams. WRAP_CONTENT ) ;
-        layoutParamsTxt.setMargins(0,10,0,0);
         final dbPreguntas dbPreguntas = new dbPreguntas(CargaTests.this);
         numTests = dbPreguntas.cuentaPreguntas(tema)/10;
 

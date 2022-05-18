@@ -19,7 +19,6 @@
 
     <!--Test examen -->
     <string name="botonExamen">Examen</string>
-    <string name="botonEmpezar">Empezar examen</string>
 
     <!--Test Preliminar -->
     <string name="txtPre">Tests sobre el Titulo Preliminar</string>
