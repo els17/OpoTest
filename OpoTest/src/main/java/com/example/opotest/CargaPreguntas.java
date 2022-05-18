@@ -25,6 +25,7 @@ public class CargaPreguntas extends AppCompatActivity {
     LinearLayout.LayoutParams layoutParamsTxt;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 for (int i = idMin; i < (idMin + 10); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg, i);
+                    cargaElementos(temp, 10, preg);
                     temp++;
                 }
                 temp = 1;
@@ -58,7 +59,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 for (int i = idMin; i < (idMin + 10); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg, i);
+                    cargaElementos(temp, 10, preg);
                     temp++;
                 }
                 temp = 1;
@@ -68,7 +69,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 for (int i = idMin; i < (idMin + 10); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg, i);
+                    cargaElementos(temp, 10, preg);
                     temp++;
                 }
                 temp = 1;
@@ -78,7 +79,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 for (int i = idMin; i < (idMin + 10); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg, i);
+                    cargaElementos(temp, 10, preg);
                     temp++;
                 }
                 temp = 1;
@@ -88,7 +89,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 for (int i = idMin; i < (idMin + 10); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg, i);
+                    cargaElementos(temp, 10, preg);
                     temp++;
                 }
                 temp = 1;
@@ -97,7 +98,7 @@ public class CargaPreguntas extends AppCompatActivity {
 
     }
 
-    public void cargaElementos(int numpregunta, int totPreguntas, Preguntas preg, int i) {
+    public void cargaElementos(int numpregunta, int totPreguntas, Preguntas preg) {
         TextView txt = new TextView(this);
         RadioGroup rg = new RadioGroup(this);
         RadioButton rb1 = new RadioButton(this);
@@ -198,6 +199,10 @@ public class CargaPreguntas extends AppCompatActivity {
                 Toast.makeText(this, "Enhorabuena!! Has pasado la prueba " + fallo + " fallos", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public void reinciarTest(RadioGroup rg){
+        rg.check(-1);
     }
 
     public void retroceder(View view) {

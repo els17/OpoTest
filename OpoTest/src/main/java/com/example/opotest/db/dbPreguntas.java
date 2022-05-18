@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.Nullable;
 
 import com.example.opotest.Entidades.Preguntas;
+import com.example.opotest.Entidades.Temas;
 
 public class dbPreguntas extends DbHelper{
 
@@ -103,5 +104,43 @@ public class dbPreguntas extends DbHelper{
         cursorPreguntas.close();
 
         return (min);
+    }
+
+    public Temas verTema(int id) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Temas tema = null;
+        Cursor cursorTemas;
+
+        cursorTemas = db.rawQuery("SELECT * FROM " + TABLE_TEMAS + " WHERE id_tema = " + id + " LIMIT 1", null);
+
+        if (cursorTemas.moveToFirst()) {
+            tema = new Temas();
+            tema.setId_tema(cursorTemas.getInt(0));
+            tema.setNombre_tema(cursorTemas.getString(1));
+
+        }
+        cursorTemas.close();
+
+        return tema;
+    }
+
+    public int cuentaTemas()
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        int numTemas = 0;
+        Cursor cursorPreguntas;
+
+        cursorPreguntas = db.rawQuery("SELECT count(id_tema) FROM " + TABLE_TEMAS + " LIMIT 1", null);
+        if (cursorPreguntas.moveToFirst()) {
+            numTemas = cursorPreguntas.getInt(0);
+        }
+        cursorPreguntas.close();
+
+        return (numTemas);
     }
 }
