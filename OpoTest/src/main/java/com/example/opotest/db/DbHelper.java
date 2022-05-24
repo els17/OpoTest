@@ -12,18 +12,28 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NOMBRE = "opoTest.db";
     public static final String TABLE_PREGUNTAS = "t_preguntas";
-
     public static final String TABLE_TEMAS = "t_temas";
 
-    private TextView tv;
+    /*private static String DB_PATH = "C://Users//elena//OneDrive//Escritorio//tfg//";
+    private static String DB_NAME = "opotest";
+    private static final String DATABASE_NOMBRE2 = DB_PATH+DB_NAME;*/
+
 
     public DbHelper(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
     }
 
+    /*
+    public DbHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
+    */
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+
+        /*
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_PREGUNTAS + "(" +
                 "id_pregunta INTEGER," +
                 "id_tema INTEGER NOT NULL," +
@@ -40,9 +50,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "id_tema INTEGER NOT NULL," +
                 "nombre_tema TEXT NOT NULL," +
                 "CONSTRAINT tema_pk PRIMARY KEY (id_tema))");
+    */
 
-
-        //setText((String)db.execSQL("SELECT pregunta FROM t_preguntas WHERE id_pregunta = 1"));
 
     }
 

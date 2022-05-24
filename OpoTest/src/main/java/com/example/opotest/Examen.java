@@ -22,6 +22,9 @@ public class Examen extends AppCompatActivity {
     LinearLayout.LayoutParams layoutParamsCb;
     LinearLayout.LayoutParams layoutParamsBtn;
 
+    static int[] cbMarcados = new int[12];
+
+    static int z = 0;
 
     int numTemas;
 
@@ -52,6 +55,13 @@ public class Examen extends AppCompatActivity {
 
         Button btn = new Button(this);
         btn.setText("Empezar examen");
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), CargaPreguntasExamen.class);
+                startActivityForResult(intent, 0);
+            }
+        });
         layout.addView(btn, layoutParamsBtn);
     }
 
@@ -65,20 +75,35 @@ public class Examen extends AppCompatActivity {
             t = dbPreguntas.verTema(i);
             cargaCheckBox(t, i);
         }
-
     }
 
     public void cargaCheckBox(Temas t, int i){
         CheckBox cb = new CheckBox(this);
         cb.setText(t.getNombre_tema());
         cb.setId(i);
+        cb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cb.isChecked()){
+                    cbMarcados[z] = cb.getId();
+                    z++;
+                }
+            }
+        });
         layout.addView(cb, layoutParamsCb);
     }
-
 
     public void retroceder(View view)
     {
         Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
         startActivityForResult(intent, 0);
+    }
+
+    public static int[] getCbMarcados() {
+        return cbMarcados;
+    }
+
+    public static void setZ(int z) {
+        Examen.z = z;
     }
 }

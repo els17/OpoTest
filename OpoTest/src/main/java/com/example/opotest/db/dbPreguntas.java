@@ -21,7 +21,7 @@ public class dbPreguntas extends DbHelper{
     public Preguntas verPregunta(int id) {
 
         DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         Preguntas pregunta = null;
         Cursor cursorPreguntas;
@@ -48,7 +48,7 @@ public class dbPreguntas extends DbHelper{
     public Preguntas verPregunta(int id, int tema) {
 
         DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         Preguntas pregunta = null;
         Cursor cursorPreguntas;
@@ -75,7 +75,7 @@ public class dbPreguntas extends DbHelper{
     public int cuentaPreguntas(int tema)
     {
         DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         int numPregs = 0;
         Cursor cursorPreguntas;
@@ -92,7 +92,7 @@ public class dbPreguntas extends DbHelper{
     public int minIdPregunta(int tema)
     {
         DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         int min = 0;
         Cursor cursorPreguntas;
@@ -106,10 +106,25 @@ public class dbPreguntas extends DbHelper{
         return (min);
     }
 
+    public Preguntas[] preguntasTema(int tema)
+    {
+        int z = 0;
+        int idMin = minIdPregunta(tema);
+        Preguntas[] pregs = new Preguntas[cuentaPreguntas(tema)];
+        System.out.println(cuentaPreguntas(tema) + " " + pregs.length);
+        for(int i = idMin; i < (idMin + cuentaPreguntas(tema)); i++)
+        {
+            pregs[z] = verPregunta(i);
+            z++;
+        }
+
+        return (pregs);
+    }
+
     public Temas verTema(int id) {
 
         DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         Temas tema = null;
         Cursor cursorTemas;
@@ -130,7 +145,7 @@ public class dbPreguntas extends DbHelper{
     public int cuentaTemas()
     {
         DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         int numTemas = 0;
         Cursor cursorPreguntas;

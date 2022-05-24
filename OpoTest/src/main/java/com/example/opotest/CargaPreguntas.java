@@ -24,8 +24,6 @@ public class CargaPreguntas extends AppCompatActivity {
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +35,6 @@ public class CargaPreguntas extends AppCompatActivity {
         layoutParamsTxt.setMargins(0, 60, 0, 0);
 
         cargarPregunta();
-
     }
 
     public void cargarPregunta() {
@@ -199,10 +196,6 @@ public class CargaPreguntas extends AppCompatActivity {
                 Toast.makeText(this, "Enhorabuena!! Has pasado la prueba " + fallo + " fallos", Toast.LENGTH_LONG).show();
             }
         }
-    }
-
-    public void reinciarTest(RadioGroup rg){
-        rg.check(-1);
     }
 
     public void retroceder(View view) {
