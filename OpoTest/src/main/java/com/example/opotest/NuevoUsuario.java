@@ -56,4 +56,10 @@ public class NuevoUsuario extends AppCompatActivity {
             Toast.makeText(this, "Introduzca una contraseña", Toast.LENGTH_LONG).show();
         }
     }
+
+    public void retroceder(View view)
+    {
+        Intent intent = new Intent (view.getContext(), Login.class);
+        startActivityForResult(intent, 0);
+    }
 }
