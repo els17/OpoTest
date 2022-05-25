@@ -19,9 +19,10 @@ import java.util.Stack;
 
 public class CargaPreguntasExamen extends AppCompatActivity {
 
-    static int fallo = 0;
-    static int respondidas = 0;
+    static int fallo;
+    static int respondidas;
     int numPreguntas = 3;
+    String numTemas;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
     final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
@@ -37,16 +38,21 @@ public class CargaPreguntasExamen extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParamsTxt.setMargins(0, 60, 0, 0);
+        fallo = 0;
+        respondidas = 0;
 
-        for (int i = 0; i < Examen.getCbMarcados().length; i++)
+        numTemas = String.valueOf(Examen.getCbMarcados()[0] - 1);
+        for (int i = 1; i < Examen.getCbMarcados().length; i++)
         {
-            System.out.println(Examen.getCbMarcados()[i]);
+            if (Examen.getCbMarcados()[i] != 0)
+            {
+                numTemas +=  " " + (Examen.getCbMarcados()[i] - 1);
+            }
         }
 
         ids2 = cargarIds();
         for (int i = 0; i < ids2.length; i++)
         {
-            System.out.println(ids2[i]);
             cargaElementos((i + 1),numPreguntas,ids2[i]);
         }
     }
@@ -207,6 +213,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Enhorabuena!! Has pasado la prueba " + fallo + " fallos", Toast.LENGTH_LONG).show();
             }
+            dbPreguntas.insertarLogin(InicioSesion.getUser().getId_usuario(), numTemas, "Examen", fallo);
         }
     }
 
@@ -220,6 +227,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         Intent intent = new Intent(view.getContext(), Examen.class);
         startActivityForResult(intent, 0);
         Examen.setZ(0);
+        numTemas = "";
     }
 
 

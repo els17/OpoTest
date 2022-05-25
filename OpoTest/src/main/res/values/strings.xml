@@ -2,6 +2,17 @@
     <string name="app_name">OpoTest</string>
     <string name="botonFlot">Boton flotante</string>
 
+    <!-- Login -->
+    <string name="inicio">Identifíquese para iniciar sesión</string>
+    <string name="usuario">Nombre de usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="inicioSesion">Iniciar Sesión</string>
+
+    <!--Nuevo usuario -->
+    <string name="crearNuevoUsuario"><u>¿No tiene cuenta? Registrese ahora</u></string>
+    <string name="inicioNuevoUsuario"><u>Rellene los campos para crear su usuario</u></string>
+    <string name="btnGuardarUsuario">Terminar</string>
+
     <!--Test temas -->
     <string name="botonTemas">Test por temas</string>
     <string name="txtTituloPrelim">Titulo preliminar</string>
@@ -20,6 +31,11 @@
     <!--Test examen -->
     <string name="botonExamen">Examen</string>
 
+    <!--Historial -->
+    <string name="btnHistorial">Historial usuario</string>
+
+    <!-- LO DE ABAJO CREO QUE NO ES UTIL -->
+
     <!--Test Preliminar -->
     <string name="txtPre">Tests sobre el Titulo Preliminar</string>
     <string name="tst1">Test 1</string>
@@ -32,15 +48,5 @@
     <string name="letraA3">C)</string>
     <string name="letraA4">D)</string>
     <string name="letraA5">SS)</string>
-
-    <string name="inicio">Identifíquese para iniciar sesión</string>
-    <string name="usuario">Nombre de usuario</string>
-    <string name="contraseña">Contraseña</string>
-    <string name="inicioSesion">Iniciar Sesión</string>
-    <string name="crearNuevoUsuario"><u>¿No tiene cuenta? Registrese ahora</u></string>
-    <string name="inicioNuevoUsuario"><u>Rellene los campos para crear su usuario</u></string>
-    <string name="btnGuardarUsuario">Terminar</string>
-
-
 
 </resources>

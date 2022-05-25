@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.opotest.Entidades.Users;
 import com.example.opotest.db.dbPreguntas;
 
 public class NuevoUsuario extends AppCompatActivity {
@@ -59,7 +58,7 @@ public class NuevoUsuario extends AppCompatActivity {
 
     public void retroceder(View view)
     {
-        Intent intent = new Intent (view.getContext(), Login.class);
+        Intent intent = new Intent (view.getContext(), InicioSesion.class);
         startActivityForResult(intent, 0);
     }
 }

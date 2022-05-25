@@ -20,8 +20,9 @@ public class CargaPreguntas extends AppCompatActivity {
     int idMin;
     int temp = 1;
     int numPreguntas = 10;
-    static int fallo = 0;
-    static int respondidas = 0;
+    static int fallo;
+    static int respondidas;
+    static String numTest;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
 
@@ -34,6 +35,8 @@ public class CargaPreguntas extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParamsTxt.setMargins(0, 60, 0, 0);
+        fallo = 0;
+        respondidas = 0;
 
         cargarPregunta();
     }
@@ -44,6 +47,7 @@ public class CargaPreguntas extends AppCompatActivity {
 
         switch (CargaTests.getIdTest()) {
             case 1:
+                numTest = "1";
                 for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
@@ -53,6 +57,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 temp = 1;
                 break;
             case 2:
+                numTest = "2";
                 idMin += 10;
                 for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
@@ -63,6 +68,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 temp = 1;
                 break;
             case 3:
+                numTest = "3";
                 idMin += 20;
                 for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
@@ -73,6 +79,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 temp = 1;
                 break;
             case 4:
+                numTest = "4";
                 idMin += 30;
                 for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
@@ -83,6 +90,7 @@ public class CargaPreguntas extends AppCompatActivity {
                 temp = 1;
                 break;
             case 5:
+                numTest = "5";
                 idMin += 40;
                 for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
@@ -191,11 +199,13 @@ public class CargaPreguntas extends AppCompatActivity {
         rb4.setEnabled(false);
 
         if (respondidas == numPreguntas) {
+            final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntas.this);
             if (fallo >= 3) {
                 Toast.makeText(this, "Has suspendido la prueba. " + fallo + " fallos", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, "Enhorabuena!! Has pasado la prueba " + fallo + " fallos", Toast.LENGTH_LONG).show();
             }
+            dbPreguntas.insertarLogin(InicioSesion.getUser().getId_usuario(), String.valueOf(TestTemas.getId() - 1), numTest, fallo);
         }
     }
 

@@ -11,16 +11,16 @@ import android.widget.Toast;
 import com.example.opotest.Entidades.Users;
 import com.example.opotest.db.dbPreguntas;
 
-public class Login extends AppCompatActivity {
+public class InicioSesion extends AppCompatActivity {
 
     TextView txtUser;
     TextView txtPwd;
-    TextView txtUsuarioNuevo;
+    static Users user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_inicio_sesion);
 
         txtUser = (TextView) findViewById(R.id.txtUser);
         txtPwd = (TextView) findViewById(R.id.txtPwd);
@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
         if (!txtUser.getText().toString().isEmpty() && !txtPwd.getText().toString().isEmpty())
         {
             existe = dbPreguntas.comprobarUsuario(txtUser.getText());
-            Users user = dbPreguntas.buscarUsuario(txtUser.getText());
+            user = dbPreguntas.buscarUsuario(txtUser.getText());
             if(existe && (txtPwd.getText().toString().equals(user.getContraseña())))
             {
                 Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
@@ -63,5 +63,9 @@ public class Login extends AppCompatActivity {
     {
         Intent intent = new Intent (view.getContext(), NuevoUsuario.class);
         startActivityForResult(intent, 0);
+    }
+
+    public static Users getUser() {
+        return user;
     }
 }
