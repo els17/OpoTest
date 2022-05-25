@@ -37,10 +37,10 @@ public class NuevoUsuario extends AppCompatActivity {
                 Toast.makeText(this, "Ya existe un usuario con ese nombre", Toast.LENGTH_LONG).show();
             }
             else{
-                //dbPreguntas.insertarUsuario(txtUser.getText(), txtPwd.getText());
-                Toast.makeText(this, "Usuario creado", Toast.LENGTH_LONG).show();
-                //Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
-                //startActivityForResult(intent, 0);
+                dbPreguntas.insertarUsuario(txtUser.getText(), txtPwd.getText());
+                //Toast.makeText(this, "Usuario creado", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
+                startActivityForResult(intent, 0);
             }
         }
         if (txtUser.getText().toString().isEmpty() && txtPwd.getText().toString().isEmpty())
