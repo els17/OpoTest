@@ -37,7 +37,9 @@
     <string name="usuario">Nombre de usuario</string>
     <string name="contraseña">Contraseña</string>
     <string name="inicioSesion">Iniciar Sesión</string>
-    <string name="nuevoUsuario"><u>¿No tiene cuenta? Registrese ahora</u></string>
+    <string name="crearNuevoUsuario"><u>¿No tiene cuenta? Registrese ahora</u></string>
+    <string name="inicioNuevoUsuario"><u>Rellene los campos para crear su usuario</u></string>
+    <string name="btnGuardarUsuario">Terminar</string>
 
 
 

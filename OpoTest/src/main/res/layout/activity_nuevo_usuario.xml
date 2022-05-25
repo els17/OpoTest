@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".NuevoUsuario">
 
     <LinearLayout
         android:id="@+id/linearParte1"
@@ -35,7 +35,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center|center_horizontal"
-            android:text="@string/inicio"/>
+            android:text="@string/inicioNuevoUsuario"/>
     </LinearLayout>
 
     <LinearLayout
@@ -95,28 +95,8 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_login"
             android:drawableTint="#fff"
-            android:onClick="iniciarSesion"
-            android:text="@string/inicioSesion" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:id="@+id/linearParte5"
-        android:layout_below="@+id/linearParte4"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txtNuevoUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:height="48dp"
-            android:gravity="center|center_horizontal"
             android:onClick="crearUsuario"
-            android:text="@string/crearNuevoUsuario"
-            android:textColor="@color/purple_200"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="@string/btnGuardarUsuario" />
     </LinearLayout>
+
 </RelativeLayout>

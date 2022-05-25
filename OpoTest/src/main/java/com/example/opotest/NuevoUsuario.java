@@ -11,23 +11,20 @@ import android.widget.Toast;
 import com.example.opotest.Entidades.Users;
 import com.example.opotest.db.dbPreguntas;
 
-public class Login extends AppCompatActivity {
+public class NuevoUsuario extends AppCompatActivity {
 
     TextView txtUser;
     TextView txtPwd;
-    TextView txtUsuarioNuevo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_nuevo_usuario);
         txtUser = (TextView) findViewById(R.id.txtUser);
         txtPwd = (TextView) findViewById(R.id.txtPwd);
-
     }
 
-    public void iniciarSesion(View view)
+    public void crearUsuario(View view)
     {
         final dbPreguntas dbPreguntas = new dbPreguntas(this);
         boolean existe = false;
@@ -35,14 +32,15 @@ public class Login extends AppCompatActivity {
         if (!txtUser.getText().toString().isEmpty() && !txtPwd.getText().toString().isEmpty())
         {
             existe = dbPreguntas.comprobarUsuario(txtUser.getText());
-            Users user = dbPreguntas.buscarUsuario(txtUser.getText());
-            if(existe && (txtPwd.getText().toString().equals(user.getContraseña())))
+            if(existe)
             {
-                Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
-                startActivityForResult(intent, 0);
+                Toast.makeText(this, "Ya existe un usuario con ese nombre", Toast.LENGTH_LONG).show();
             }
             else{
-                Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG).show();
+                //dbPreguntas.insertarUsuario(txtUser.getText(), txtPwd.getText());
+                Toast.makeText(this, "Usuario creado", Toast.LENGTH_LONG).show();
+                //Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
+                //startActivityForResult(intent, 0);
             }
         }
         if (txtUser.getText().toString().isEmpty() && txtPwd.getText().toString().isEmpty())
@@ -57,11 +55,5 @@ public class Login extends AppCompatActivity {
         {
             Toast.makeText(this, "Introduzca una contraseña", Toast.LENGTH_LONG).show();
         }
-    }
-
-    public void crearUsuario(View view)
-    {
-        Intent intent = new Intent (view.getContext(), NuevoUsuario.class);
-        startActivityForResult(intent, 0);
     }
 }

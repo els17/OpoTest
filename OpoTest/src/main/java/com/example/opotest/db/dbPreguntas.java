@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.example.opotest.Entidades.Preguntas;
 import com.example.opotest.Entidades.Temas;
+import com.example.opotest.Entidades.Users;
 
 public class dbPreguntas extends DbHelper{
 
@@ -159,11 +160,51 @@ public class dbPreguntas extends DbHelper{
         return (numTemas);
     }
 
-    public void insertarUsuario(String nombre_usuario, String contraseña){
+    public boolean comprobarUsuario(CharSequence nombre){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        boolean existe = false;
+        Cursor cursorUsers;
+
+        cursorUsers = db.rawQuery("SELECT EXISTS (SELECT 1 FROM " + TABLE_USERS + " WHERE nombre_usuario LIKE '" + nombre + "') LIMIT 1", null);
+
+        if (cursorUsers.moveToFirst()) {
+            if (cursorUsers.getInt(0) == 1)
+            {
+                existe = true;
+            }
+        }
+        cursorUsers.close();
+
+        return existe;
+    }
+
+    public Users buscarUsuario(CharSequence nombre){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Users user = null;
+        Cursor cursorUsers;
+
+        cursorUsers = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE nombre_usuario LIKE '" + nombre + "' LIMIT 1", null);
+
+        if (cursorUsers.moveToFirst()) {
+            user = new Users();
+            user.setId_usuario(cursorUsers.getInt(0));
+            user.setNombre_usuario(cursorUsers.getString(1));
+            user.setContraseña(cursorUsers.getString(2));
+        }
+        cursorUsers.close();
+
+        return user;
+    }
+
+    public void insertarUsuario(CharSequence nombre_usuario, CharSequence contraseña){
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        db.execSQL("INSERT INTO " + TABLE_USERS + " (nombre_usuario, contraseña) VALUES ( " + nombre_usuario + ", " + contraseña + " )");
+        db.execSQL("INSERT INTO " + TABLE_USERS + " (nombre_usuario, contraseña) VALUES ('" + nombre_usuario + "', '" + contraseña + "')");
     }
 
     public void insertarLogin(int id_user, int tema_test, int num_test, int fallos){
