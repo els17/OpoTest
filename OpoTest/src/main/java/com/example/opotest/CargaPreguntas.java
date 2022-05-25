@@ -19,6 +19,7 @@ public class CargaPreguntas extends AppCompatActivity {
 
     int idMin;
     int temp = 1;
+    int numPreguntas = 10;
     static int fallo = 0;
     static int respondidas = 0;
     LinearLayout layout;
@@ -43,50 +44,50 @@ public class CargaPreguntas extends AppCompatActivity {
 
         switch (CargaTests.getIdTest()) {
             case 1:
-                for (int i = idMin; i < (idMin + 10); i++) {
+                for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg);
+                    cargaElementos(temp, numPreguntas, preg);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 2:
                 idMin += 10;
-                for (int i = idMin; i < (idMin + 10); i++) {
+                for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg);
+                    cargaElementos(temp, numPreguntas, preg);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 3:
                 idMin += 20;
-                for (int i = idMin; i < (idMin + 10); i++) {
+                for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg);
+                    cargaElementos(temp, numPreguntas, preg);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 4:
                 idMin += 30;
-                for (int i = idMin; i < (idMin + 10); i++) {
+                for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg);
+                    cargaElementos(temp, numPreguntas, preg);
                     temp++;
                 }
                 temp = 1;
                 break;
             case 5:
                 idMin += 40;
-                for (int i = idMin; i < (idMin + 10); i++) {
+                for (int i = idMin; i < (idMin + numPreguntas); i++) {
                     Preguntas preg;
                     preg = dbPreguntas.verPregunta(i);
-                    cargaElementos(temp, 10, preg);
+                    cargaElementos(temp, numPreguntas, preg);
                     temp++;
                 }
                 temp = 1;
@@ -189,7 +190,7 @@ public class CargaPreguntas extends AppCompatActivity {
         rb3.setEnabled(false);
         rb4.setEnabled(false);
 
-        if (respondidas == 10) {
+        if (respondidas == numPreguntas) {
             if (fallo >= 3) {
                 Toast.makeText(this, "Has suspendido la prueba. " + fallo + " fallos", Toast.LENGTH_LONG).show();
             } else {

@@ -201,7 +201,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         rb3.setEnabled(false);
         rb4.setEnabled(false);
 
-        if (respondidas == 10) {
+        if (respondidas == numPreguntas) {
             if (fallo >= 3) {
                 Toast.makeText(this, "Has suspendido la prueba. " + fallo + " fallos", Toast.LENGTH_LONG).show();
             } else {
