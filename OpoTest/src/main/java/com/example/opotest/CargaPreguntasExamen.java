@@ -21,7 +21,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
 
     static int fallo = 0;
     static int respondidas = 0;
-    int numPreguntas = 20;
+    int numPreguntas = 3;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
     final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
@@ -221,4 +221,6 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         startActivityForResult(intent, 0);
         Examen.setZ(0);
     }
+
+
 }

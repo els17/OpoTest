@@ -158,4 +158,18 @@ public class dbPreguntas extends DbHelper{
 
         return (numTemas);
     }
+
+    public void insertarUsuario(String nombre_usuario, String contraseña){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        db.execSQL("INSERT INTO " + TABLE_USERS + " (nombre_usuario, contraseña) VALUES ( " + nombre_usuario + ", " + contraseña + " )");
+    }
+
+    public void insertarLogin(int id_user, int tema_test, int num_test, int fallos){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        db.execSQL("INSERT INTO " + TABLE_LOGIN + " (id_user, tema_test, num_test, fallos) VALUES ( " + id_user + ", " + tema_test + ", " + num_test + ", " + fallos + " )");
+    }
 }

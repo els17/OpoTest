@@ -33,4 +33,12 @@
     <string name="letraA4">D)</string>
     <string name="letraA5">SS)</string>
 
+    <string name="inicio">Identifíquese para iniciar sesión</string>
+    <string name="usuario">Nombre de usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="inicioSesion">Iniciar Sesión</string>
+    <string name="nuevoUsuario"><u>¿No tiene cuenta? Registrese ahora</u></string>
+
+
+
 </resources>

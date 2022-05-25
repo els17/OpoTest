@@ -13,6 +13,9 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NOMBRE = "opoTest.db";
     public static final String TABLE_PREGUNTAS = "t_preguntas";
     public static final String TABLE_TEMAS = "t_temas";
+    public static final String TABLE_LOGIN = "t_login";
+    public static final String TABLE_USERS = "t_users";
+
 
     /*private static String DB_PATH = "C://Users//elena//OneDrive//Escritorio//tfg//";
     private static String DB_NAME = "opotest";
