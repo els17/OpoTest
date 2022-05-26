@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpoTest">
         <activity
+            android:name=".Historial"
+            android:exported="false" />
+        <activity
             android:name=".NuevoUsuario"
             android:exported="false" />
         <activity

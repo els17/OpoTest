@@ -16,6 +16,7 @@ public class InicioSesion extends AppCompatActivity {
     TextView txtUser;
     TextView txtPwd;
     static Users user;
+    int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class InicioSesion extends AppCompatActivity {
             user = dbPreguntas.buscarUsuario(txtUser.getText());
             if(existe && (txtPwd.getText().toString().equals(user.getContraseña())))
             {
+                id = user.getId_usuario();
                 Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
                 startActivityForResult(intent, 0);
             }

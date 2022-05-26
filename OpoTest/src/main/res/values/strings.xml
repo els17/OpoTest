@@ -33,20 +33,11 @@
 
     <!--Historial -->
     <string name="btnHistorial">Historial usuario</string>
-
-    <!-- LO DE ABAJO CREO QUE NO ES UTIL -->
-
-    <!--Test Preliminar -->
-    <string name="txtPre">Tests sobre el Titulo Preliminar</string>
-    <string name="tst1">Test 1</string>
-    <string name="tst2">Test 2</string>
-    <string name="tst3">Test 3</string>
-
-    <string name="next">Siguiente pagina</string>
-    <string name="letraA">A)</string>
-    <string name="letraA2">B)</string>
-    <string name="letraA3">C)</string>
-    <string name="letraA4">D)</string>
-    <string name="letraA5">SS)</string>
+    <string name="txtHistorial">Historial de Pruebas y Exámenes</string>
+    <string name="tema">Tema</string>
+    <string name="numTest">Numero de test</string>
+    <string name="fallos">Fallos</string>
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
 
 </resources>

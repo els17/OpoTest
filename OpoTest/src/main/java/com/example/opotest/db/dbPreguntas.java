@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.example.opotest.Entidades.Login;
 import com.example.opotest.Entidades.Preguntas;
 import com.example.opotest.Entidades.Temas;
 import com.example.opotest.Entidades.Users;
@@ -122,6 +123,81 @@ public class dbPreguntas extends DbHelper{
         return (pregs);
     }
 
+    public Login verLogin(int id_login) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Login login = null;
+        Cursor cursorLogin;
+
+        cursorLogin = db.rawQuery("SELECT * FROM " + TABLE_LOGIN + " WHERE id_login = " + id_login +  " LIMIT 1", null);
+
+        if (cursorLogin.moveToFirst()) {
+            login = new Login();
+            login.setId_login(cursorLogin.getInt(0));
+            login.setId_user(cursorLogin.getInt(1));
+            login.setTema_test(cursorLogin.getString(2));
+            login.setNum_test(cursorLogin.getString(3));
+            login.setFallos(cursorLogin.getInt(4));
+            login.setFecha(cursorLogin.getString(5));
+            login.setHora(cursorLogin.getString(6));
+
+        }
+        cursorLogin.close();
+
+        return login;
+    }
+
+    public int cuentaLogins(int id_user)
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        int numLogin = 0;
+        Cursor cursorLogin;
+
+        cursorLogin = db.rawQuery("SELECT count(id_login) FROM " + TABLE_LOGIN + " WHERE id_user = " + id_user +  " LIMIT 1", null);
+        if (cursorLogin.moveToFirst()) {
+            numLogin = cursorLogin.getInt(0);
+        }
+        cursorLogin.close();
+
+        return (numLogin);
+    }
+
+    public int minIdLogin(int id_user)
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        int min = 0;
+        Cursor cursorLogin;
+
+        cursorLogin = db.rawQuery("SELECT min(id_login) FROM " + TABLE_LOGIN + " WHERE id_user = " + id_user +  " LIMIT 1", null);
+        if (cursorLogin.moveToFirst()) {
+            min = cursorLogin.getInt(0);
+        }
+        cursorLogin.close();
+
+        return (min);
+    }
+
+    public Login[] logins(int id_user)
+    {
+        int z = 0;
+        int idMin = minIdLogin(id_user);
+        Login[] login = new Login[cuentaLogins(id_user)];
+        System.out.println(cuentaLogins(id_user) + " " + login.length);
+        for(int i = idMin; i < (idMin + cuentaLogins(id_user)); i++)
+        {
+            login[z] = verLogin(i);
+            z++;
+        }
+
+        return (login);
+    }
+
     public Temas verTema(int id) {
 
         DbHelper dbHelper = new DbHelper(context);
@@ -207,10 +283,10 @@ public class dbPreguntas extends DbHelper{
         db.execSQL("INSERT INTO " + TABLE_USERS + " (nombre_usuario, contraseña) VALUES ('" + nombre_usuario + "', '" + contraseña + "')");
     }
 
-    public void insertarLogin(int id_user, String tema_test, String num_test, int fallos){
+    public void insertarLogin(int id_user, String tema_test, String num_test, int fallos, String fecha, String hora){
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        db.execSQL("INSERT INTO " + TABLE_LOGIN + " (id_user, tema_test, num_test, fallos) VALUES ( " + id_user + ", '" + tema_test + "', '" + num_test + "', " + fallos + " )");
+        db.execSQL("INSERT INTO " + TABLE_LOGIN + " (id_user, tema_test, num_test, fallos, fecha, hora) VALUES ( " + id_user + ", '" + tema_test + "', '" + num_test + "', " + fallos + ", '" + fecha + "', '" + hora + "' )");
     }
 }

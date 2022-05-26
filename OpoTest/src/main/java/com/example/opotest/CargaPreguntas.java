@@ -15,6 +15,9 @@ import android.widget.Toast;
 import com.example.opotest.Entidades.Preguntas;
 import com.example.opotest.db.dbPreguntas;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class CargaPreguntas extends AppCompatActivity {
 
     int idMin;
@@ -25,6 +28,10 @@ public class CargaPreguntas extends AppCompatActivity {
     static String numTest;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
+    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    Date date = new Date(System.currentTimeMillis());
+    SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm:ss");
+    Date date2 = new Date(System.currentTimeMillis());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,7 +212,7 @@ public class CargaPreguntas extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Enhorabuena!! Has pasado la prueba " + fallo + " fallos", Toast.LENGTH_LONG).show();
             }
-            dbPreguntas.insertarLogin(InicioSesion.getUser().getId_usuario(), String.valueOf(TestTemas.getId() - 1), numTest, fallo);
+            dbPreguntas.insertarLogin(InicioSesion.getUser().getId_usuario(), String.valueOf(TestTemas.getId() - 1), numTest, fallo, formatter.format(date), formatter2.format(date2));
         }
     }
 

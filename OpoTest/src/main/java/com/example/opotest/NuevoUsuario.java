@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.opotest.Entidades.Users;
 import com.example.opotest.db.dbPreguntas;
 
 public class NuevoUsuario extends AppCompatActivity {
 
     TextView txtUser;
     TextView txtPwd;
+    Users usu = new Users();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class NuevoUsuario extends AppCompatActivity {
     {
         final dbPreguntas dbPreguntas = new dbPreguntas(this);
         boolean existe = false;
+        //usu.setId_usuario(dbPreguntas.buscarUsuario(txtUser.getText()).getId_usuario());
 
         if (!txtUser.getText().toString().isEmpty() && !txtPwd.getText().toString().isEmpty())
         {
@@ -38,7 +41,7 @@ public class NuevoUsuario extends AppCompatActivity {
             else{
                 dbPreguntas.insertarUsuario(txtUser.getText(), txtPwd.getText());
                 //Toast.makeText(this, "Usuario creado", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent (view.getContext(), PantallaPrincipal.class);
+                Intent intent = new Intent (view.getContext(), InicioSesion.class);
                 startActivityForResult(intent, 0);
             }
         }
@@ -60,5 +63,9 @@ public class NuevoUsuario extends AppCompatActivity {
     {
         Intent intent = new Intent (view.getContext(), InicioSesion.class);
         startActivityForResult(intent, 0);
+    }
+
+    public Users getUsu() {
+        return usu;
     }
 }

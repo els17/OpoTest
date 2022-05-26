@@ -3,9 +3,12 @@ package com.example.opotest.Entidades;
 public class Login {
 
     private int id_login;
+    private int id_user;
     private String tema_test;
     private String num_test;
     private int fallos;
+    private String fecha;
+    private String hora;
 
     public int getId_login() {
         return id_login;
@@ -13,6 +16,14 @@ public class Login {
 
     public void setId_login(int id_login) {
         this.id_login = id_login;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
     public String getTema_test() {
@@ -37,5 +48,21 @@ public class Login {
 
     public void setFallos(int fallos) {
         this.fallos = fallos;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }

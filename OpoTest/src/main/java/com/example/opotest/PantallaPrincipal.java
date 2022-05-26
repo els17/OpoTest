@@ -31,4 +31,10 @@ public class PantallaPrincipal extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
+    public void historial(View view)
+    {
+        Intent intent = new Intent (view.getContext(), Historial.class);
+        startActivityForResult(intent, 0);
+    }
+
 }
