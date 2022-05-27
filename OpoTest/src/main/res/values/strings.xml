@@ -33,9 +33,10 @@
 
     <!--Historial -->
     <string name="btnHistorial">Historial usuario</string>
+    <string name="btnPDF">Generar PDF</string>
     <string name="txtHistorial">Historial de Pruebas y Exámenes</string>
     <string name="tema">Tema</string>
-    <string name="numTest">Numero de test</string>
+    <string name="numTest">Nº de test</string>
     <string name="fallos">Fallos</string>
     <string name="fecha">Fecha</string>
     <string name="hora">Hora</string>

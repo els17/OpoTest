@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/hora"
-            android:layout_width="99dp"
+            android:layout_width="80dp"
             android:layout_height="29dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/style_borde"
@@ -49,7 +49,7 @@
 
         <TextView
             android:id="@+id/fecha"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="29dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/style_borde"
@@ -74,10 +74,11 @@
 
         <TextView
             android:id="@+id/numTest"
-            android:layout_width="108dp"
+            android:layout_width="90dp"
             android:layout_height="29dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/style_borde"
+            android:gravity="center"
             android:text="@string/numTest"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -88,7 +89,7 @@
             android:id="@+id/txtTema"
             android:layout_width="47dp"
             android:layout_height="29dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/style_borde"
             android:text="@string/tema"
@@ -98,8 +99,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="410dp"
-            android:layout_height="640dp"
+            android:layout_height="580dp"
             android:layout_marginTop="90dp"
             android:contentDescription="@string/botonFlot"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,15 +109,14 @@
 
             <LinearLayout
                 android:id="@+id/layout"
-                android:layout_width="400dp"
+                android:layout_width="390dp"
                 android:layout_height="640dp"
-                android:layout_marginStart="4dp"
-                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/numTest" />
-
+                app:layout_constraintTop_toBottomOf="@+id/numTest">
+            </LinearLayout>
         </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
