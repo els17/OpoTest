@@ -3,16 +3,12 @@ package com.example.opotest;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +22,7 @@ public class Historial extends AppCompatActivity {
     LinearLayout layoutBtn;
     LinearLayout.LayoutParams layoutParamsTxt;
     LinearLayout.LayoutParams layoutParamsBtn;
+    Button btn;
 
     final com.example.opotest.db.dbPreguntas dbPreguntas = new dbPreguntas(Historial.this);
     int idUsuario;
@@ -47,25 +44,25 @@ public class Historial extends AppCompatActivity {
         layoutParamsBtn.setMargins(40, 40, 70, 0);
         idUsuario = InicioSesion.getUser().getId_usuario();
         logins = new Login[dbPreguntas.cuentaLogins(idUsuario)];
-
         logins = dbPreguntas.logins(idUsuario);
 
 
         for (int i = 0; i < logins.length; i++) {
             crearFilas(i + 1, logins[i].getTema_test(), logins[i].getNum_test(), logins[i].getFallos(), logins[i].getFecha(), logins[i].getHora());
         }
-        Button btn = new Button(this);
+        /*
+        btn = new Button(this);
         btn.setText("Generar PDF");
         btn.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,150,getResources().getDisplayMetrics()));
         btn.setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,50,getResources().getDisplayMetrics()));
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
         layoutBtn.addView(btn, layoutParamsBtn);
         layout.addView(layoutBtn, layoutParamsBtn);
+        */
     }
 
     public void crearFilas(int i, String tema, String numTest, int fallo, String fecha, String hora){
