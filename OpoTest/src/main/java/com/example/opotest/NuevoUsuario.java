@@ -15,6 +15,8 @@ public class NuevoUsuario extends AppCompatActivity {
 
     TextView txtUser;
     TextView txtPwd;
+    TextView txtPwd2;
+
     Users usu = new Users();
 
     @Override
@@ -23,6 +25,8 @@ public class NuevoUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_nuevo_usuario);
         txtUser = (TextView) findViewById(R.id.txtUser);
         txtPwd = (TextView) findViewById(R.id.txtPwd);
+        txtPwd2 = (TextView) findViewById(R.id.txtPwd2);
+
     }
 
     public void crearUsuario(View view)
@@ -31,12 +35,15 @@ public class NuevoUsuario extends AppCompatActivity {
         boolean existe = false;
         //usu.setId_usuario(dbPreguntas.buscarUsuario(txtUser.getText()).getId_usuario());
 
-        if (!txtUser.getText().toString().isEmpty() && !txtPwd.getText().toString().isEmpty())
+        if (!txtUser.getText().toString().isEmpty() && !txtPwd.getText().toString().isEmpty() && !txtPwd2.getText().toString().isEmpty())
         {
             existe = dbPreguntas.comprobarUsuario(txtUser.getText());
             if(existe)
             {
                 Toast.makeText(this, "Ya existe un usuario con ese nombre", Toast.LENGTH_LONG).show();
+            }
+            else if(!txtPwd.getText().toString().equals(txtPwd2.getText().toString().isEmpty())){
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
             }
             else{
                 dbPreguntas.insertarUsuario(txtUser.getText(), txtPwd.getText());

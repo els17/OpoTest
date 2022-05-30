@@ -6,6 +6,7 @@
     <string name="inicio">Identifíquese para iniciar sesión</string>
     <string name="usuario">Nombre de usuario</string>
     <string name="contraseña">Contraseña</string>
+    <string name="contraseña2">Repetir contraseña</string>
     <string name="inicioSesion">Iniciar Sesión</string>
 
     <!--Nuevo usuario -->
