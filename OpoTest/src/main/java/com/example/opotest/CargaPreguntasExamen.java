@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,8 +27,10 @@ public class CargaPreguntasExamen extends AppCompatActivity {
     static int respondidas;
     int numPreguntas = 3;
     String numTemas;
+    Button btn;
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
+    LinearLayout.LayoutParams layoutParamsBtn;
     final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     Date date = new Date(System.currentTimeMillis());
@@ -35,6 +39,12 @@ public class CargaPreguntasExamen extends AppCompatActivity {
     Date date2 = new Date(System.currentTimeMillis());
 
     int[] ids2 = new int[numPreguntas];
+    Preguntas[] pregs = new Preguntas[numPreguntas];
+    RadioGroup[] rgs = new RadioGroup[numPreguntas];
+    RadioButton[] rb1s = new RadioButton[numPreguntas];
+    RadioButton[] rb2s = new RadioButton[numPreguntas];
+    RadioButton[] rb3s = new RadioButton[numPreguntas];
+    RadioButton[] rb4s = new RadioButton[numPreguntas];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,10 @@ public class CargaPreguntasExamen extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParamsTxt.setMargins(0, 60, 0, 0);
+        layoutParamsBtn = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParamsBtn.setMargins(40, 40, 70, 0);
         fallo = 0;
         respondidas = 0;
 
@@ -62,6 +76,19 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         {
             cargaElementos((i + 1),numPreguntas,ids2[i]);
         }
+
+        btn = new Button(this);
+        btn.setText("Corregir examen");
+        btn.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,150,getResources().getDisplayMetrics()));
+        btn.setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,50,getResources().getDisplayMetrics()));
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                corregirExamen();
+            }
+        });
+        layout.addView(btn, layoutParamsBtn);
+
     }
 
     public int[] cargarIds(){
@@ -96,6 +123,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         return ids2;
     }
 
+    /*
     public Preguntas[] cargarPreguntas(){
         Preguntas[] pregs = new Preguntas[numPreguntas];
         Preguntas preg;
@@ -119,6 +147,8 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         return pregs;
     }
 
+     */
+
     public void cargaElementos(int numpregunta, int totPreguntas, int id) {
         TextView txt = new TextView(this);
         RadioGroup rg = new RadioGroup(this);
@@ -136,38 +166,21 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         rg.setOrientation(RadioGroup.VERTICAL);
 
         rb1.setText(preg.getRespuesta1().trim());
-        rb1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
-            }
-        });
         rg.addView(rb1);
         rb2.setText(preg.getRespuesta2().trim());
-        rb2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
-            }
-        });
         rg.addView(rb2);
         rb3.setText(preg.getRespuesta3().trim());
-        rb3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
-            }
-        });
         rg.addView(rb3);
         rb4.setText(preg.getRespuesta4().trim());
-        rb4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                comprobarRespuesta(preg, rg, rb1, rb2, rb3, rb4);
-            }
-        });
         rg.addView(rb4);
         layout.addView(rg, layoutParamsTxt);
+
+        pregs[numpregunta - 1] = preg;
+        rgs[numpregunta - 1] = rg;
+        rb1s[numpregunta - 1] = rb1;
+        rb2s[numpregunta - 1] = rb2;
+        rb3s[numpregunta - 1] = rb3;
+        rb4s[numpregunta - 1] = rb4;
     }
 
     public void comprobarRespuesta(Preguntas preg, RadioGroup rg, RadioButton rb1, RadioButton rb2, RadioButton rb3, RadioButton rb4) {
@@ -222,6 +235,15 @@ public class CargaPreguntasExamen extends AppCompatActivity {
             }
             dbPreguntas.insertarLogin(InicioSesion.getUser().getId_usuario(), numTemas, "Examen", fallo, formatter.format(date), formatter2.format(date2));
         }
+    }
+
+    public void corregirExamen(){
+
+        for (int i = 0; i < numPreguntas; i++)
+        {
+            comprobarRespuesta(pregs[i], rgs[i], rb1s[i], rb2s[i], rb3s[i], rb4s[i]);
+        }
+
     }
 
     public int aleatorio(int max, int min)
