@@ -11,6 +11,8 @@ import com.example.opotest.Entidades.Preguntas;
 import com.example.opotest.Entidades.Temas;
 import com.example.opotest.Entidades.Users;
 
+import java.sql.ResultSet;
+
 public class dbPreguntas extends DbHelper{
 
     Context context;
@@ -29,33 +31,6 @@ public class dbPreguntas extends DbHelper{
         Cursor cursorPreguntas;
 
         cursorPreguntas = db.rawQuery("SELECT * FROM " + TABLE_PREGUNTAS + " WHERE id_pregunta = " + id + " LIMIT 1", null);
-
-        if (cursorPreguntas.moveToFirst()) {
-            pregunta = new Preguntas();
-            pregunta.setId_pregunta(cursorPreguntas.getInt(0));
-            pregunta.setId_tema(cursorPreguntas.getInt(1));
-            pregunta.setPregunta(cursorPreguntas.getString(2));
-            pregunta.setRespuesta1(cursorPreguntas.getString(3));
-            pregunta.setRespuesta2(cursorPreguntas.getString(4));
-            pregunta.setRespuesta3(cursorPreguntas.getString(5));
-            pregunta.setRespuesta4(cursorPreguntas.getString(6));
-            pregunta.setRespuesta_correcta(cursorPreguntas.getString(7));
-
-        }
-        cursorPreguntas.close();
-
-        return pregunta;
-    }
-
-    public Preguntas verPregunta(int id, int tema) {
-
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        Preguntas pregunta = null;
-        Cursor cursorPreguntas;
-
-        cursorPreguntas = db.rawQuery("SELECT * FROM " + TABLE_PREGUNTAS + " WHERE id_pregunta = " + id + " AND id_tema = " + tema +  " LIMIT 1", null);
 
         if (cursorPreguntas.moveToFirst()) {
             pregunta = new Preguntas();
@@ -108,45 +83,35 @@ public class dbPreguntas extends DbHelper{
         return (min);
     }
 
-    public Preguntas[] preguntasTema(int tema)
-    {
-        int z = 0;
-        int idMin = minIdPregunta(tema);
-        Preguntas[] pregs = new Preguntas[cuentaPreguntas(tema)];
-        System.out.println(cuentaPreguntas(tema) + " " + pregs.length);
-        for(int i = idMin; i < (idMin + cuentaPreguntas(tema)); i++)
-        {
-            pregs[z] = verPregunta(i);
-            z++;
-        }
-
-        return (pregs);
-    }
-
-    public Login verLogin(int id_login) {
+    public Login[] verLoginID(int id_user) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Login login = null;
+        Login[] logings = new Login[cuentaLogins(id_user)];
+        ResultSet res;
         Cursor cursorLogin;
+        int i = 0;
 
-        cursorLogin = db.rawQuery("SELECT * FROM " + TABLE_LOGIN + " WHERE id_login = " + id_login +  " LIMIT 1", null);
+        cursorLogin = db.rawQuery("SELECT * FROM " + TABLE_LOGIN + " WHERE id_user = " + id_user, null);
 
         if (cursorLogin.moveToFirst()) {
-            login = new Login();
-            login.setId_login(cursorLogin.getInt(0));
-            login.setId_user(cursorLogin.getInt(1));
-            login.setTema_test(cursorLogin.getString(2));
-            login.setNum_test(cursorLogin.getString(3));
-            login.setFallos(cursorLogin.getInt(4));
-            login.setFecha(cursorLogin.getString(5));
-            login.setHora(cursorLogin.getString(6));
-
+            do {
+                Login login = new Login();
+                login.setId_login(cursorLogin.getInt(0));
+                login.setId_user(cursorLogin.getInt(1));
+                login.setTema_test(cursorLogin.getString(2));
+                login.setNum_test(cursorLogin.getString(3));
+                login.setFallos(cursorLogin.getInt(4));
+                login.setFecha(cursorLogin.getString(5));
+                login.setHora(cursorLogin.getString(6));
+                logings[i] = login;
+                i++;
+            }while (cursorLogin.moveToNext());
         }
         cursorLogin.close();
 
-        return login;
+        return logings;
     }
 
     public int cuentaLogins(int id_user)
@@ -166,37 +131,6 @@ public class dbPreguntas extends DbHelper{
         return (numLogin);
     }
 
-    public int minIdLogin(int id_user)
-    {
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        int min = 0;
-        Cursor cursorLogin;
-
-        cursorLogin = db.rawQuery("SELECT min(id_login) FROM " + TABLE_LOGIN + " WHERE id_user = " + id_user +  " LIMIT 1", null);
-        if (cursorLogin.moveToFirst()) {
-            min = cursorLogin.getInt(0);
-        }
-        cursorLogin.close();
-
-        return (min);
-    }
-
-    public Login[] logins(int id_user)
-    {
-        int z = 0;
-        int idMin = minIdLogin(id_user);
-        Login[] login = new Login[cuentaLogins(id_user)];
-        System.out.println(cuentaLogins(id_user) + " " + login.length);
-        for(int i = idMin; i < (idMin + cuentaLogins(id_user)); i++)
-        {
-            login[z] = verLogin(i);
-            z++;
-        }
-
-        return (login);
-    }
 
     public Temas verTema(int id) {
 
