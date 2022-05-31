@@ -59,7 +59,7 @@ public class Historial extends AppCompatActivity {
         txtID.setText(String.valueOf(i));
         txtID.setTextSize(13);
         txtID.setGravity(Gravity.CENTER);
-        txtID.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,20,getResources().getDisplayMetrics()));
+        txtID.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,26,getResources().getDisplayMetrics()));
         txtID.setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,29,getResources().getDisplayMetrics()));
         txtID.setBackground(ContextCompat.getDrawable(this, R.drawable.style_borde));
         txtID.setTextColor(Color.DKGRAY);

@@ -227,14 +227,6 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         rb3.setEnabled(false);
         rb4.setEnabled(false);
 
-        if (respondidas == numPreguntas) {
-            if (fallo >= 3) {
-                Toast.makeText(this, "Has suspendido la prueba. " + fallo + " fallos", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Enhorabuena!! Has pasado la prueba " + fallo + " fallos", Toast.LENGTH_LONG).show();
-            }
-            dbPreguntas.insertarLogin(InicioSesion.getUser().getId_usuario(), numTemas, "Examen", fallo, formatter.format(date), formatter2.format(date2));
-        }
     }
 
     public void corregirExamen(){
@@ -243,7 +235,12 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         {
             comprobarRespuesta(pregs[i], rgs[i], rb1s[i], rb2s[i], rb3s[i], rb4s[i]);
         }
-
+        if (fallo >= 3) {
+            Toast.makeText(this, "Has suspendido la prueba. " + fallo + " fallos", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Enhorabuena!! Has pasado la prueba " + fallo + " fallos", Toast.LENGTH_LONG).show();
+        }
+        dbPreguntas.insertarLogin(InicioSesion.getUser().getId_usuario(), numTemas, "Examen", fallo, formatter.format(date), formatter2.format(date2));
     }
 
     public int aleatorio(int max, int min)
