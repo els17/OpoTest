@@ -22,6 +22,8 @@ public class dbPreguntas extends DbHelper{
         this.context = context;
     }
 
+    //Metodos Preguntas
+
     public Preguntas verPregunta(int id) {
 
         DbHelper dbHelper = new DbHelper(context);
@@ -83,6 +85,48 @@ public class dbPreguntas extends DbHelper{
         return (min);
     }
 
+    //Metodos Temas
+
+    public Temas verTema(int id) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Temas tema = null;
+        Cursor cursorTemas;
+
+        cursorTemas = db.rawQuery("SELECT * FROM " + TABLE_TEMAS + " WHERE id_tema = " + id + " LIMIT 1", null);
+
+        if (cursorTemas.moveToFirst()) {
+            tema = new Temas();
+            tema.setId_tema(cursorTemas.getInt(0));
+            tema.setNombre_tema(cursorTemas.getString(1));
+
+        }
+        cursorTemas.close();
+
+        return tema;
+    }
+
+    public int cuentaTemas()
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        int numTemas = 0;
+        Cursor cursorPreguntas;
+
+        cursorPreguntas = db.rawQuery("SELECT count(id_tema) FROM " + TABLE_TEMAS + " LIMIT 1", null);
+        if (cursorPreguntas.moveToFirst()) {
+            numTemas = cursorPreguntas.getInt(0);
+        }
+        cursorPreguntas.close();
+
+        return (numTemas);
+    }
+
+    //Metodos Login
+
     public Login[] verLoginID(int id_user) {
 
         DbHelper dbHelper = new DbHelper(context);
@@ -131,44 +175,14 @@ public class dbPreguntas extends DbHelper{
         return (numLogin);
     }
 
-
-    public Temas verTema(int id) {
-
+    public void insertarLogin(int id_user, String tema_test, String num_test, int fallos, String fecha, String hora){
         DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        Temas tema = null;
-        Cursor cursorTemas;
-
-        cursorTemas = db.rawQuery("SELECT * FROM " + TABLE_TEMAS + " WHERE id_tema = " + id + " LIMIT 1", null);
-
-        if (cursorTemas.moveToFirst()) {
-            tema = new Temas();
-            tema.setId_tema(cursorTemas.getInt(0));
-            tema.setNombre_tema(cursorTemas.getString(1));
-
-        }
-        cursorTemas.close();
-
-        return tema;
+        db.execSQL("INSERT INTO " + TABLE_LOGIN + " (id_user, tema_test, num_test, fallos, fecha, hora) VALUES ( " + id_user + ", '" + tema_test + "', '" + num_test + "', " + fallos + ", '" + fecha + "', '" + hora + "' )");
     }
 
-    public int cuentaTemas()
-    {
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        int numTemas = 0;
-        Cursor cursorPreguntas;
-
-        cursorPreguntas = db.rawQuery("SELECT count(id_tema) FROM " + TABLE_TEMAS + " LIMIT 1", null);
-        if (cursorPreguntas.moveToFirst()) {
-            numTemas = cursorPreguntas.getInt(0);
-        }
-        cursorPreguntas.close();
-
-        return (numTemas);
-    }
+    //Metodos Usuario
 
     public boolean comprobarUsuario(CharSequence nombre){
         DbHelper dbHelper = new DbHelper(context);
@@ -217,10 +231,4 @@ public class dbPreguntas extends DbHelper{
         db.execSQL("INSERT INTO " + TABLE_USERS + " (nombre_usuario, contraseña) VALUES ('" + nombre_usuario + "', '" + contraseña + "')");
     }
 
-    public void insertarLogin(int id_user, String tema_test, String num_test, int fallos, String fecha, String hora){
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        db.execSQL("INSERT INTO " + TABLE_LOGIN + " (id_user, tema_test, num_test, fallos, fecha, hora) VALUES ( " + id_user + ", '" + tema_test + "', '" + num_test + "', " + fallos + ", '" + fecha + "', '" + hora + "' )");
-    }
 }

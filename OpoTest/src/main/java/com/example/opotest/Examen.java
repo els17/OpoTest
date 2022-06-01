@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.example.opotest.Entidades.Temas;
 import com.example.opotest.db.dbPreguntas;
 
-import org.w3c.dom.Text;
-
 public class Examen extends AppCompatActivity {
 
     LinearLayout layout;

@@ -95,7 +95,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         Stack <Integer> ids = new Stack<Integer>();
         int[] ids2 = new int[numPreguntas];
 
-        final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
+        final com.example.opotest.db.dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
         int idMin;
         int idMax;
         int tema;
