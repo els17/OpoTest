@@ -42,9 +42,6 @@
         <activity
             android:name=".TestTemas"
             android:exported="false" />
-        <activity
-            android:name=".PantallaPrincipal2"
-            android:exported="false" />
     </application>
 
 </manifest>
