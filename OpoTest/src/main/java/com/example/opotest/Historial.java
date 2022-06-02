@@ -21,7 +21,7 @@ public class Historial extends AppCompatActivity {
     LinearLayout layoutBtn;
     LinearLayout.LayoutParams layoutParamsTxt;
 
-    final com.example.opotest.db.dbPreguntas dbPreguntas = new dbPreguntas(Historial.this);
+    final dbPreguntas dbPreguntas = new dbPreguntas(Historial.this);
     int idUsuario;
     Login[] logins;
 

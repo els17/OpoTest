@@ -95,7 +95,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         Stack <Integer> ids = new Stack<Integer>();
         int[] ids2 = new int[numPreguntas];
 
-        final com.example.opotest.db.dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
+        final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
         int idMin;
         int idMax;
         int tema;
@@ -122,32 +122,6 @@ public class CargaPreguntasExamen extends AppCompatActivity {
 
         return ids2;
     }
-
-    /*
-    public Preguntas[] cargarPreguntas(){
-        Preguntas[] pregs = new Preguntas[numPreguntas];
-        Preguntas preg;
-
-        final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
-        int idMin = 0;
-        int idMax = 0;
-        int tema;
-
-        for (int i = 0; i < pregs.length; i++)
-        {
-            do{
-                tema = Examen.getCbMarcados()[aleatorio((Examen.getCbMarcados().length - 1), 0)];
-            }while(tema == 0);
-            idMin = dbPreguntas.minIdPregunta(tema);
-            idMax = (dbPreguntas.minIdPregunta(tema) + dbPreguntas.cuentaPreguntas(tema)) - 1;
-            preg = dbPreguntas.verPregunta(aleatorio(idMin, idMax), tema);
-            pregs[i] = preg;
-        }
-
-        return pregs;
-    }
-
-     */
 
     public void cargaElementos(int numpregunta, int totPreguntas, int id) {
         TextView txt = new TextView(this);
