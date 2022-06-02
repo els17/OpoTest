@@ -25,7 +25,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
 
     static int fallo;
     static int respondidas;
-    int numPreguntas = 3;
+    int numPreguntas = 30;
     String numTemas;
     Button btn;
     LinearLayout layout;

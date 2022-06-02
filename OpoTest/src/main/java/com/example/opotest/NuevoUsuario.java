@@ -17,8 +17,6 @@ public class NuevoUsuario extends AppCompatActivity {
     TextView txtPwd;
     TextView txtPwd2;
 
-    Users usu = new Users();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +31,6 @@ public class NuevoUsuario extends AppCompatActivity {
     {
         final dbPreguntas dbPreguntas = new dbPreguntas(this);
         boolean existe = false;
-        //usu.setId_usuario(dbPreguntas.buscarUsuario(txtUser.getText()).getId_usuario());
 
         if (!txtUser.getText().toString().isEmpty() && !txtPwd.getText().toString().isEmpty() && !txtPwd2.getText().toString().isEmpty())
         {
@@ -42,7 +39,7 @@ public class NuevoUsuario extends AppCompatActivity {
             {
                 Toast.makeText(this, "Ya existe un usuario con ese nombre", Toast.LENGTH_LONG).show();
             }
-            else if(!txtPwd.getText().toString().equals(txtPwd2.getText().toString().isEmpty())){
+            else if(!txtPwd.getText().toString().equals(txtPwd2.getText().toString())){
                 Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
             }
             else{
@@ -72,7 +69,4 @@ public class NuevoUsuario extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
-    public Users getUsu() {
-        return usu;
-    }
 }
