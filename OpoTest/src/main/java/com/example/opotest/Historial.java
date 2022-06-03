@@ -17,13 +17,13 @@ import com.example.opotest.db.dbPreguntas;
 
 public class Historial extends AppCompatActivity {
 
-    LinearLayout layout;
-    LinearLayout layoutBtn;
-    LinearLayout.LayoutParams layoutParamsTxt;
-
     final dbPreguntas dbPreguntas = new dbPreguntas(Historial.this);
     int idUsuario;
     Login[] logins;
+
+    LinearLayout layout;
+    LinearLayout layoutBtn;
+    LinearLayout.LayoutParams layoutParamsTxt;
 
 
     @Override

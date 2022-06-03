@@ -20,14 +20,17 @@ import java.util.Date;
 
 public class CargaPreguntas extends AppCompatActivity {
 
-    int idMin;
-    int temp = 1;
     int numPreguntas = 10;
     static int fallo;
     static int respondidas;
+    int idMin;
+    int temp = 1;
     static String numTest;
+    final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntas.this);
+
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
+
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     Date date = new Date(System.currentTimeMillis());
     SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm:ss");
@@ -49,7 +52,6 @@ public class CargaPreguntas extends AppCompatActivity {
     }
 
     public void cargarPregunta() {
-        final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntas.this);
         idMin = dbPreguntas.minIdPregunta(TestTemas.getId());
 
         switch (CargaTests.getIdTest()) {
@@ -206,7 +208,6 @@ public class CargaPreguntas extends AppCompatActivity {
         rb4.setEnabled(false);
 
         if (respondidas == numPreguntas) {
-            final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntas.this);
             if (fallo >= 3) {
                 Toast.makeText(this, "Has suspendido la prueba. " + fallo + " fallos", Toast.LENGTH_LONG).show();
             } else {

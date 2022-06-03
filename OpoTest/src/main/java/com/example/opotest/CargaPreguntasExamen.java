@@ -23,21 +23,23 @@ import java.util.Stack;
 
 public class CargaPreguntasExamen extends AppCompatActivity {
 
+    int numPreguntas = 30;
     static int fallo;
     static int respondidas;
-    int numPreguntas = 30;
     String numTemas;
-    Button btn;
+    final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
+
     LinearLayout layout;
     LinearLayout.LayoutParams layoutParamsTxt;
     LinearLayout.LayoutParams layoutParamsBtn;
-    final dbPreguntas dbPreguntas = new dbPreguntas(CargaPreguntasExamen.this);
+
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     Date date = new Date(System.currentTimeMillis());
 
     SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm:ss");
     Date date2 = new Date(System.currentTimeMillis());
 
+    Button btn;
     int[] ids2 = new int[numPreguntas];
     Preguntas[] pregs = new Preguntas[numPreguntas];
     RadioGroup[] rgs = new RadioGroup[numPreguntas];
