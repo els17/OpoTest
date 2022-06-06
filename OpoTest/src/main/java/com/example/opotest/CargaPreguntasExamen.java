@@ -69,7 +69,7 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         {
             if (Examen.getCbMarcados()[i] != 0)
             {
-                numTemas +=  " " + (Examen.getCbMarcados()[i] - 1) + "/";
+                numTemas += (Examen.getCbMarcados()[i] - 1) +  "/";
             }
         }
 
