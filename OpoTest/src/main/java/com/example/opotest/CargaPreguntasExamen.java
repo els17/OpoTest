@@ -64,12 +64,12 @@ public class CargaPreguntasExamen extends AppCompatActivity {
         fallo = 0;
         respondidas = 0;
 
-        numTemas = String.valueOf(Examen.getCbMarcados()[0] - 1);
+        numTemas = String.valueOf(Examen.getCbMarcados()[0] - 1) + "/";
         for (int i = 1; i < Examen.getCbMarcados().length; i++)
         {
             if (Examen.getCbMarcados()[i] != 0)
             {
-                numTemas +=  " " + (Examen.getCbMarcados()[i] - 1);
+                numTemas +=  " " + (Examen.getCbMarcados()[i] - 1) + "/";
             }
         }
 

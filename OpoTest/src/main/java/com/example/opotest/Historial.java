@@ -67,7 +67,7 @@ public class Historial extends AppCompatActivity {
         txtTema.setText(tema);
         txtTema.setTextSize(13);
         txtTema.setGravity(Gravity.CENTER);
-        txtTema.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,47,getResources().getDisplayMetrics()));
+        txtTema.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,62,getResources().getDisplayMetrics()));
         txtTema.setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,29,getResources().getDisplayMetrics()));
         txtTema.setBackground(ContextCompat.getDrawable(this, R.drawable.style_borde));
         txtTema.setTextColor(Color.DKGRAY);
@@ -76,7 +76,7 @@ public class Historial extends AppCompatActivity {
         txtNumTest.setText(numTest);
         txtNumTest.setTextSize(13);
         txtNumTest.setGravity(Gravity.CENTER);
-        txtNumTest.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,90,getResources().getDisplayMetrics()));
+        txtNumTest.setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,75,getResources().getDisplayMetrics()));
         txtNumTest.setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,29,getResources().getDisplayMetrics()));
         txtNumTest.setBackground(ContextCompat.getDrawable(this, R.drawable.style_borde));
         txtNumTest.setTextColor(Color.DKGRAY);
